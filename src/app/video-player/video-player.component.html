@@ -1,0 +1,25 @@
+<!-- <h2 *ngIf="started==true">Live Video</h2>
+ -->
+ <div class="row">
+  <div class="col-md-12">
+      <!-- <label for="videoType">Select Video Type: </label> (change)="switchVideoType()" -->
+      <select id="videoType" [(ngModel)]="selectedVideoType" >
+          <option value="live">Live Feed</option>
+          <option value="delayed">5 Seconds Delayed Feed</option>
+      </select>
+  </div>
+</div>
+<div [ngClass]="started?'camera-preview':''" #video id="cameraPreview"></div>
+<button *ngIf="started==true" (click)="playVideo()">play</button>
+<button *ngIf="started==true" (click)="pauseVideo()">pause</button>
+<button (click)="startCamera()" *ngIf="started==false" >Start</button>
+<button (click)="captureImage()" *ngIf="started==true">Capture</button>
+<button (click)="flip()" *ngIf="started==true">Flip</button>
+<button (click)="stopCam()" *ngIf="started==true">Stop</button>
+<div *ngFor="let image of images">
+<img [src]="image">
+</div>
+<!-- <app-delayed-video *ngIf="started==true"></app-delayed-video> -->
+<!--  *ngIf="started==true" -->
+<video class="mirror-video" video id="delayedVideo" autoplay playsinline #videoElement  width="100%" height="50%"></video>
+<video src=""></video>
