@@ -5,6 +5,7 @@ import {
   CameraPreview,
   CameraPreviewPictureOptions,
 } from '@capacitor-community/camera-preview';
+import { VideoService } from '../services/video.service';
 @Component({
   selector: 'app-video-player',
   templateUrl: './video-player.component.html',
@@ -17,7 +18,9 @@ export class VideoPlayerComponent implements OnInit {
   stopped:boolean=false;
   images: string[] = [];
 
-  constructor() {}
+  constructor(
+    private videoService: VideoService
+  ) {}
   
   ngOnInit(): void {
     // this.startVideo();
@@ -34,10 +37,10 @@ export class VideoPlayerComponent implements OnInit {
     });
     const cameraPreviewOptions: CameraPreviewOptions = {
       position: 'rear',
-      height: 1920,
-      width: 1080,
-      x: 100,
-      y: 100,
+      height: 200,
+      width: 200,
+      x:10,
+      y:10
     };
     CameraPreview.start(cameraPreviewOptions).then(() => {});
   }
@@ -93,6 +96,7 @@ export class VideoPlayerComponent implements OnInit {
     };
     CameraPreview.capture(CameraPreviewPictureOptions).then((res) => {
       const imageData = 'data:image/png;base64,' + res.value;
+      this.videoService.storeImage(imageData)
       this.images.push(imageData);
     });
     console.log(this.images);
@@ -124,11 +128,9 @@ export class VideoPlayerComponent implements OnInit {
     };
     
     CameraPreview.startRecordVideo(cameraPreviewOptions);
-    console.log( 'startRecording', <HTMLVideoElement>document.getElementById('video'))
   }
 
   async stopRecording() {
     const resultRecordVideo = await CameraPreview.stopRecordVideo();
-    console.log('stopRecording', resultRecordVideo)
   }
 }

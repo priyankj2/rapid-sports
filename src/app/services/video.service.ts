@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   Plugins
 } from '@capacitor/core';
-import { Filesystem,Directory } from '@capacitor/filesystem';
+import { Filesystem,Directory, FilesystemDirectory } from '@capacitor/filesystem';
 const { Storage } = Plugins;
 
 @Injectable({
@@ -28,6 +28,24 @@ export class VideoService {
       path: fileName,
       data: base64Data,
       directory: Directory.Documents
+    });
+
+    // Add file to local array
+    this.videos.unshift(savedFile.uri as never);
+
+    // Write information to storage
+    return Storage['set']({
+      key: this.VIDEOS_KEY,
+      value: JSON.stringify(this.videos)
+    });
+  }
+
+  async storeImage(base64Data: any) {
+    const fileName = new Date().getTime() + '.jpg';
+    const savedFile = await Filesystem.writeFile({
+      path: fileName,
+      data: base64Data,
+      directory: FilesystemDirectory.ExternalStorage
     });
 
     // Add file to local array
