@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="patient">
+            <h2><span jhiTranslate="rapidApp.patient.detail.title">Patient</span> {{ patient.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rapidApp.patient.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{ patient.firstName }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.patient.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{ patient.lastName }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.patient.gender">Gender</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'rapidApp.Gender.' + patient.gender }}">{{ patient.gender }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.patient.email">Email</span></dt>
+                <dd>
+                    <span>{{ patient.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.patient.dateOfBirth">Date Of Birth</span></dt>
+                <dd>
+                    <span>{{ patient.dateOfBirth }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.patient.medicalHistory">Medical History</span></dt>
+                <dd>
+                    <span>{{ patient.medicalHistory }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.patient.patientID">Patient ID</span></dt>
+                <dd>
+                    <span>{{ patient.patientID }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.patient.therapyWeeks">Therapy Weeks</span></dt>
+                <dd>
+                    <span>{{ patient.therapyWeeks }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.patient.primaryComplaint">Primary Complaint</span></dt>
+                <dd>
+                    <div *ngIf="patient.primaryComplaint">
+                        <a [routerLink]="['/condition', patient.primaryComplaint?.id, 'view']">{{ patient.primaryComplaint?.name }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.patient.clinic">Clinic</span></dt>
+                <dd>
+                    <div *ngIf="patient.clinic">
+                        <a [routerLink]="['/clinic', patient.clinic?.id, 'view']">{{ patient.clinic?.name }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/patient', patient.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="location">
+            <h2><span jhiTranslate="rapidApp.location.detail.title">Location</span> {{ location.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rapidApp.location.name">Name</span></dt>
+                <dd>
+                    <span>{{ location.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.location.streetAddress1">Street Address 1</span></dt>
+                <dd>
+                    <span>{{ location.streetAddress1 }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.location.streetAddress2">Street Address 2</span></dt>
+                <dd>
+                    <span>{{ location.streetAddress2 }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.location.city">City</span></dt>
+                <dd>
+                    <span>{{ location.city }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.location.postalCode">Postal Code</span></dt>
+                <dd>
+                    <span>{{ location.postalCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.location.stateOrProvince">State Or Province</span></dt>
+                <dd>
+                    <div *ngIf="location.stateOrProvince">
+                        <a [routerLink]="['/state-or-province', location.stateOrProvince?.id, 'view']">{{ location.stateOrProvince?.abbreviation }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.location.country">Country</span></dt>
+                <dd>
+                    <div *ngIf="location.country">
+                        <a [routerLink]="['/country', location.country?.id, 'view']">{{ location.country?.abbreviation }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.location.careProvider">Care Provider</span></dt>
+                <dd>
+                    <div *ngIf="location.careProvider">
+                        <a [routerLink]="['/coach', location.careProvider?.id, 'view']">{{ location.careProvider?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.location.clinic">Clinic</span></dt>
+                <dd>
+                    <div *ngIf="location.clinic">
+                        <a [routerLink]="['/clinic', location.clinic?.id, 'view']">{{ location.clinic?.name }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/location', location.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

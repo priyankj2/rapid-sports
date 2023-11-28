@@ -1,0 +1,162 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="assessment">
+            <h2><span jhiTranslate="rapidApp.assessment.detail.title">Assessment</span> {{ assessment.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rapidApp.assessment.startTime">Start Time</span></dt>
+                <dd>
+                    <span>{{ assessment.startTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.selfAdministered">Self Administered</span></dt>
+                <dd>
+                    <span>{{ assessment.selfAdministered }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.score">Score</span></dt>
+                <dd>
+                    <span>{{ assessment.score }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.standardPathLength">Standard Path Length</span></dt>
+                <dd>
+                    <span>{{ assessment.standardPathLength }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.proPathLength">Pro Path Length</span></dt>
+                <dd>
+                    <span>{{ assessment.proPathLength }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.visionPathLength">Vision Path Length</span></dt>
+                <dd>
+                    <span>{{ assessment.visionPathLength }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.vestibularPathLength">Vestibular Path Length</span></dt>
+                <dd>
+                    <span>{{ assessment.vestibularPathLength }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.standardPercentile">Standard Percentile</span></dt>
+                <dd>
+                    <span>{{ assessment.standardPercentile }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.proPercentile">Pro Percentile</span></dt>
+                <dd>
+                    <span>{{ assessment.proPercentile }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.visionPercentile">Vision Percentile</span></dt>
+                <dd>
+                    <span>{{ assessment.visionPercentile }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.vestibularPercentile">Vestibular Percentile</span></dt>
+                <dd>
+                    <span>{{ assessment.vestibularPercentile }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.leftFrontPressure">Left Front Pressure</span></dt>
+                <dd>
+                    <span>{{ assessment.leftFrontPressure }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.leftRearPressure">Left Rear Pressure</span></dt>
+                <dd>
+                    <span>{{ assessment.leftRearPressure }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.rightFrontPressure">Right Front Pressure</span></dt>
+                <dd>
+                    <span>{{ assessment.rightFrontPressure }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.rightRearPressure">Right Rear Pressure</span></dt>
+                <dd>
+                    <span>{{ assessment.rightRearPressure }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.centerOfPressureX">Center Of Pressure X</span></dt>
+                <dd>
+                    <span>{{ assessment.centerOfPressureX }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.centerOfPressureY">Center Of Pressure Y</span></dt>
+                <dd>
+                    <span>{{ assessment.centerOfPressureY }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.painLevel">Skill Level</span></dt>
+                <dd>
+                    <span>{{ assessment.painLevel }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.notes">Notes</span></dt>
+                <dd>
+                    <span>{{ assessment.notes }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.imageData">Image Data</span></dt>
+                <dd>
+                    <div *ngIf="assessment.imageData">
+                        <a [routerLink]="['/image-data', assessment.imageData?.id, 'view']">{{ assessment.imageData?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.careProvider">Care Provider</span></dt>
+                <dd>
+                    <div *ngIf="assessment.careProvider">
+                        <a [routerLink]="['/coach', assessment.careProvider?.id, 'view']">{{ assessment.careProvider?.lastName }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.observation">Observation</span></dt>
+                <dd>
+                    <div *ngIf="assessment.observation">
+                        <a [routerLink]="['/observation', assessment.observation?.id, 'view']">{{ assessment.observation?.name }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.measurement">Measurement</span></dt>
+                <dd>
+                    <div *ngIf="assessment.measurement">
+                        <a [routerLink]="['/foot-decoding-measurement', assessment.measurement?.id, 'view']">{{ assessment.measurement?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.footType">Foot Type</span></dt>
+                <dd>
+                    <div *ngIf="assessment.footType">
+                        <a [routerLink]="['/foot-type', assessment.footType?.id, 'view']">{{ assessment.footType?.name }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.leftFootType">Left Foot Type</span></dt>
+                <dd>
+                    <div *ngIf="assessment.leftFootType">
+                        <a [routerLink]="['/foot-type', assessment.leftFootType?.id, 'view']">{{ assessment.leftFootType?.name }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.rightFootType">Right Foot Type</span></dt>
+                <dd>
+                    <div *ngIf="assessment.rightFootType">
+                        <a [routerLink]="['/foot-type', assessment.rightFootType?.id, 'view']">{{ assessment.rightFootType?.name }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.condition">Condition</span></dt>
+                <dd>
+                    <div *ngIf="assessment.condition">
+                        <a [routerLink]="['/condition', assessment.condition?.id, 'view']">{{ assessment.condition?.name }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.appointment">Appointment</span></dt>
+                <dd>
+                    <div *ngIf="assessment.appointment">
+                        <a [routerLink]="['/appointment', assessment.appointment?.id, 'view']">{{ assessment.appointment?.startTime }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.assessment.patient">Patient</span></dt>
+                <dd>
+                    <div *ngIf="assessment.patient">
+                        <a [routerLink]="['/patient', assessment.patient?.id, 'view']">{{ assessment.patient?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/assessment', assessment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

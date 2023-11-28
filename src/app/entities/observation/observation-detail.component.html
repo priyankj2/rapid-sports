@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="observation">
+            <h2><span jhiTranslate="rapidApp.observation.detail.title">Observation</span> {{ observation.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rapidApp.observation.name">Name</span></dt>
+                <dd>
+                    <span>{{ observation.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.observation.description">Description</span></dt>
+                <dd>
+                    <span>{{ observation.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.observation.instructionalText">Instructional Text</span></dt>
+                <dd>
+                    <span>{{ observation.instructionalText }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.observation.exampleImageUrl">Example Image Url</span></dt>
+                <dd>
+                    <span>{{ observation.exampleImageUrl }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.observation.internalCode">Internal Code</span></dt>
+                <dd>
+                    <span>{{ observation.internalCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.observation.observationDuration">Observation Duration</span></dt>
+                <dd>
+                    <span>{{ observation.observationDuration }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.observation.enabled">Enabled</span></dt>
+                <dd>
+                    <span>{{ observation.enabled }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.observation.displayOrder">Display Order</span></dt>
+                <dd>
+                    <span>{{ observation.displayOrder }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.observation.category">Category</span></dt>
+                <dd>
+                    <span>{{ observation.category }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.observation.focusStageNumber">Focus Stage Number</span></dt>
+                <dd>
+                    <span>{{ observation.focusStageNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.observation.stageCount">Stage Count</span></dt>
+                <dd>
+                    <span>{{ observation.stageCount }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.observation.visible">Visible</span></dt>
+                <dd>
+                    <span>{{ observation.visible }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/observation', observation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="condition">
+            <h2><span jhiTranslate="rapidApp.condition.detail.title">Condition</span> {{ condition.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rapidApp.condition.name">Name</span></dt>
+                <dd>
+                    <span>{{ condition.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.condition.primaryArea">Primary Area</span></dt>
+                <dd>
+                    <span>{{ condition.primaryArea }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.condition.description">Description</span></dt>
+                <dd>
+                    <span>{{ condition.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.condition.enabled">Enabled</span></dt>
+                <dd>
+                    <span>{{ condition.enabled }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.condition.displayOrder">Display Order</span></dt>
+                <dd>
+                    <span>{{ condition.displayOrder }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/condition', condition.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

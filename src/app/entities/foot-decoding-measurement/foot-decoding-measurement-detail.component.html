@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="footDecodingMeasurement">
+            <h2><span jhiTranslate="rapidApp.footDecodingMeasurement.detail.title">Foot Decoding Measurement</span> {{ footDecodingMeasurement.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rapidApp.footDecodingMeasurement.leftFront">Left Front</span></dt>
+                <dd>
+                    <span>{{ footDecodingMeasurement.leftFront }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footDecodingMeasurement.leftHeel">Left Heel</span></dt>
+                <dd>
+                    <span>{{ footDecodingMeasurement.leftHeel }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footDecodingMeasurement.rightFront">Right Front</span></dt>
+                <dd>
+                    <span>{{ footDecodingMeasurement.rightFront }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footDecodingMeasurement.rightHeel">Right Heel</span></dt>
+                <dd>
+                    <span>{{ footDecodingMeasurement.rightHeel }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footDecodingMeasurement.centerOfPressure">Center Of Pressure</span></dt>
+                <dd>
+                    <span>{{ footDecodingMeasurement.centerOfPressure }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footDecodingMeasurement.footDecodingMeasurementRaw">Foot Decoding Measurement Raw</span></dt>
+                <dd>
+                    <div *ngIf="footDecodingMeasurement.footDecodingMeasurementRaw">
+                        <a [routerLink]="['/foot-decoding-measurement-raw', footDecodingMeasurement.footDecodingMeasurementRaw?.id, 'view']">{{ footDecodingMeasurement.footDecodingMeasurementRaw?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/foot-decoding-measurement', footDecodingMeasurement.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

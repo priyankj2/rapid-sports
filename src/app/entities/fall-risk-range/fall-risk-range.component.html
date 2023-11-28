@@ -1,0 +1,83 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="rapidApp.fallRiskRange.home.title">Fall Risk Ranges</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-fall-risk-range" [routerLink]="['/fall-risk-range/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="rapidApp.fallRiskRange.home.createLabel">
+            Create a new Fall Risk Range
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="fallRiskRanges?.length === 0">
+        <span jhiTranslate="rapidApp.fallRiskRange.home.notFound">No fallRiskRanges found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="fallRiskRanges?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="gender"><span jhiTranslate="rapidApp.fallRiskRange.gender">Gender</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="minimumValue"><span jhiTranslate="rapidApp.fallRiskRange.minimumValue">Minimum Value</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="maximumValue"><span jhiTranslate="rapidApp.fallRiskRange.maximumValue">Maximum Value</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="color"><span jhiTranslate="rapidApp.fallRiskRange.color">Color</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="ageGroup.minimumAge"><span jhiTranslate="rapidApp.fallRiskRange.ageGroup">Age Group</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fallRiskRange of fallRiskRanges ;trackBy: trackId">
+                    <td><a [routerLink]="['/fall-risk-range', fallRiskRange.id, 'view']">{{ fallRiskRange.id }}</a></td>
+                    <td jhiTranslate="{{ 'rapidApp.Gender.' + fallRiskRange.gender }}">{{ fallRiskRange.gender }}</td>
+                    <td>{{ fallRiskRange.minimumValue }}</td>
+                    <td>{{ fallRiskRange.maximumValue }}</td>
+                    <td>{{ fallRiskRange.color }}</td>
+                    <td>
+                        <div *ngIf="fallRiskRange.ageGroup">
+                            <a [routerLink]="['/age-group', fallRiskRange.ageGroup?.id, 'view']" >{{ fallRiskRange.ageGroup?.minimumAge }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/fall-risk-range', fallRiskRange.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/fall-risk-range', fallRiskRange.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(fallRiskRange)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="fallRiskRanges?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

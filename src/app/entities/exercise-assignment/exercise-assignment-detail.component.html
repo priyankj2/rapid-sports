@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="exerciseAssignment">
+            <h2><span jhiTranslate="rapidApp.exerciseAssignment.detail.title">Exercise Assignment</span> {{ exerciseAssignment.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rapidApp.exerciseAssignment.sets">Sets</span></dt>
+                <dd>
+                    <span>{{ exerciseAssignment.sets }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseAssignment.reps">Reps</span></dt>
+                <dd>
+                    <span>{{ exerciseAssignment.reps }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseAssignment.holdTime">Hold Time</span></dt>
+                <dd>
+                    <span>{{ exerciseAssignment.holdTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseAssignment.resistance">Resistance</span></dt>
+                <dd>
+                    <span>{{ exerciseAssignment.resistance }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseAssignment.days">Days</span></dt>
+                <dd>
+                    <span>{{ exerciseAssignment.days }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseAssignment.custom">Custom</span></dt>
+                <dd>
+                    <span>{{ exerciseAssignment.custom }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseAssignment.exerciseOrModality">Exercise Or Modality</span></dt>
+                <dd>
+                    <div *ngIf="exerciseAssignment.exerciseOrModality">
+                        <a [routerLink]="['/exercise-or-modality', exerciseAssignment.exerciseOrModality?.id, 'view']">{{ exerciseAssignment.exerciseOrModality?.name }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseAssignment.patientCourseOfAction">Patient Course Of Action</span></dt>
+                <dd>
+                    <div *ngIf="exerciseAssignment.patientCourseOfAction">
+                        <a [routerLink]="['/athlete-course-of-action', exerciseAssignment.patientCourseOfAction?.id, 'view']">{{ exerciseAssignment.patientCourseOfAction?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/exercise-assignment', exerciseAssignment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

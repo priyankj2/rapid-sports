@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-course-of-action-mapping-heading" jhiTranslate="rapidApp.courseOfActionMapping.home.createOrEditLabel">Create or edit a Course Of Action Mapping</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.courseOfActionMapping.label" for="field_label">Label</label>
+                    <input type="text" class="form-control" name="label" id="field_label"
+                           formControlName="label"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.courseOfActionMapping.condition" for="field_condition">Condition</label>
+                    <select class="form-control" id="field_condition" name="condition" formControlName="condition">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="conditionOption.id === editForm.get('condition')!.value?.id ? editForm.get('condition')!.value : conditionOption" *ngFor="let conditionOption of conditions; trackBy: trackById">{{ conditionOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.courseOfActionMapping.footType" for="field_footType">Foot Type</label>
+                    <select class="form-control" id="field_footType" name="footType" formControlName="footType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="footTypeOption.id === editForm.get('footType')!.value?.id ? editForm.get('footType')!.value : footTypeOption" *ngFor="let footTypeOption of foottypes; trackBy: trackById">{{ footTypeOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.courseOfActionMapping.areaOfConcentration" for="field_areaOfConcentration">Area Of Concentration</label>
+                    <select class="form-control" id="field_areaOfConcentration" name="areaOfConcentration" formControlName="areaOfConcentration">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="areaOfConcentrationOption.id === editForm.get('areaOfConcentration')!.value?.id ? editForm.get('areaOfConcentration')!.value : areaOfConcentrationOption" *ngFor="let areaOfConcentrationOption of areaofconcentrations; trackBy: trackById">{{ areaOfConcentrationOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.courseOfActionMapping.clinic" for="field_clinic">Clinic</label>
+                    <select class="form-control" id="field_clinic" name="clinic" formControlName="clinic">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="clinicOption.id === editForm.get('clinic')!.value?.id ? editForm.get('clinic')!.value : clinicOption" *ngFor="let clinicOption of clinics; trackBy: trackById">{{ clinicOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="rapidApp.courseOfActionMapping.exercise" for="field_exercises">Exercise</label>
+                    <kendo-multiselect id="field_exercises"
+                                       [data]="exerciseormodalities"
+                                       formControlName="exercises"
+                                       textField="name"
+                                       valueField="id"
+                                       placeholder="Add Exercise or Modality"></kendo-multiselect>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.courseOfActionMapping.observation" for="field_observation">Observation</label>
+                    <select class="form-control" id="field_observation" name="observation" formControlName="observation">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="observationOption.id === editForm.get('observation')!.value?.id ? editForm.get('observation')!.value : observationOption" *ngFor="let observationOption of observations; trackBy: trackById">{{ observationOption.name }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

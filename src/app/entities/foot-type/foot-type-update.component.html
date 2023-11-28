@@ -1,0 +1,134 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-foot-type-heading" jhiTranslate="rapidApp.footType.home.createOrEditLabel">Create or edit a Foot Type</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.footType.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.footType.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                    <div *ngIf="editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('description')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 2000 }">
+                        This field cannot be longer than 2000 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.footType.leftFront" for="field_leftFront">Left Front</label>
+                    <input type="number" class="form-control" name="leftFront" id="field_leftFront"
+                           formControlName="leftFront"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.footType.leftHeel" for="field_leftHeel">Left Heel</label>
+                    <input type="number" class="form-control" name="leftHeel" id="field_leftHeel"
+                           formControlName="leftHeel"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.footType.rightFront" for="field_rightFront">Right Front</label>
+                    <input type="number" class="form-control" name="rightFront" id="field_rightFront"
+                           formControlName="rightFront"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.footType.rightHeel" for="field_rightHeel">Right Heel</label>
+                    <input type="number" class="form-control" name="rightHeel" id="field_rightHeel"
+                           formControlName="rightHeel"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.footType.leftFootDescription" for="field_leftFootDescription">Left Foot Description</label>
+                    <input type="text" class="form-control" name="leftFootDescription" id="field_leftFootDescription"
+                           formControlName="leftFootDescription"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.footType.rightFootDescription" for="field_rightFootDescription">Right Foot Description</label>
+                    <input type="text" class="form-control" name="rightFootDescription" id="field_rightFootDescription"
+                           formControlName="rightFootDescription"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.footType.forefootMedial" for="field_forefootMedial">Forefoot Medial</label>
+                    <input type="number" class="form-control" name="forefootMedial" id="field_forefootMedial"
+                           formControlName="forefootMedial"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.footType.forefootLateral" for="field_forefootLateral">Forefoot Lateral</label>
+                    <input type="number" class="form-control" name="forefootLateral" id="field_forefootLateral"
+                           formControlName="forefootLateral"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.footType.midfootMedial" for="field_midfootMedial">Midfoot Medial</label>
+                    <input type="number" class="form-control" name="midfootMedial" id="field_midfootMedial"
+                           formControlName="midfootMedial"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.footType.midfootLateral" for="field_midfootLateral">Midfoot Lateral</label>
+                    <input type="number" class="form-control" name="midfootLateral" id="field_midfootLateral"
+                           formControlName="midfootLateral"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.footType.rearfootMedial" for="field_rearfootMedial">Rearfoot Medial</label>
+                    <input type="number" class="form-control" name="rearfootMedial" id="field_rearfootMedial"
+                           formControlName="rearfootMedial"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.footType.rearfootLateral" for="field_rearfootLateral">Rearfoot Lateral</label>
+                    <input type="number" class="form-control" name="rearfootLateral" id="field_rearfootLateral"
+                           formControlName="rearfootLateral"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.footType.orthoCondition" for="field_orthoCondition">Ortho Condition</label>
+                    <input type="text" class="form-control" name="orthoCondition" id="field_orthoCondition"
+                           formControlName="orthoCondition"/>
+                    <div *ngIf="editForm.get('orthoCondition')!.invalid && (editForm.get('orthoCondition')!.dirty || editForm.get('orthoCondition')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('orthoCondition')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 2000 }">
+                        This field cannot be longer than 2000 characters.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

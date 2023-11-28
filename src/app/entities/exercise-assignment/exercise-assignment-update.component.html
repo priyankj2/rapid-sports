@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-exercise-assignment-heading" jhiTranslate="rapidApp.exerciseAssignment.home.createOrEditLabel">Create or edit a Exercise Assignment</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.exerciseAssignment.sets" for="field_sets">Sets</label>
+                    <input type="number" class="form-control" name="sets" id="field_sets"
+                           formControlName="sets"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.exerciseAssignment.reps" for="field_reps">Reps</label>
+                    <input type="number" class="form-control" name="reps" id="field_reps"
+                           formControlName="reps"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.exerciseAssignment.holdTime" for="field_holdTime">Hold Time</label>
+                    <input type="number" class="form-control" name="holdTime" id="field_holdTime"
+                           formControlName="holdTime"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.exerciseAssignment.resistance" for="field_resistance">Resistance</label>
+                    <input type="number" class="form-control" name="resistance" id="field_resistance"
+                           formControlName="resistance"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.exerciseAssignment.days" for="field_days">Days</label>
+                    <input type="number" class="form-control" name="days" id="field_days"
+                           formControlName="days"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.exerciseAssignment.custom" for="field_custom">Custom</label>
+                    <input type="checkbox" class="form-control" name="custom" id="field_custom"
+                           formControlName="custom"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.exerciseAssignment.exerciseOrModality" for="field_exerciseOrModality">Exercise Or Modality</label>
+                    <select class="form-control" id="field_exerciseOrModality" name="exerciseOrModality" formControlName="exerciseOrModality">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="exerciseOrModalityOption.id === editForm.get('exerciseOrModality')!.value?.id ? editForm.get('exerciseOrModality')!.value : exerciseOrModalityOption" *ngFor="let exerciseOrModalityOption of exerciseormodalities; trackBy: trackById">{{ exerciseOrModalityOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.exerciseAssignment.patientCourseOfAction" for="field_patientCourseOfAction">Patient Course Of Action</label>
+                    <select class="form-control" id="field_patientCourseOfAction" name="patientCourseOfAction" formControlName="patientCourseOfAction">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="patientCourseOfActionOption.id === editForm.get('patientCourseOfAction')!.value?.id ? editForm.get('patientCourseOfAction')!.value : patientCourseOfActionOption" *ngFor="let patientCourseOfActionOption of patientcourseofactions; trackBy: trackById">{{ patientCourseOfActionOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

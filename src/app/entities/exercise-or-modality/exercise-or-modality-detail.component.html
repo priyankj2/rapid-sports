@@ -1,0 +1,84 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="exerciseOrModality">
+            <h2><span jhiTranslate="rapidApp.exerciseOrModality.detail.title">Exercise Or Modality</span> {{ exerciseOrModality.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rapidApp.exerciseOrModality.name">Name</span></dt>
+                <dd>
+                    <span>{{ exerciseOrModality.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseOrModality.description">Description</span></dt>
+                <dd>
+                    <span>{{ exerciseOrModality.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseOrModality.hasSets">Has Sets</span></dt>
+                <dd>
+                    <span>{{ exerciseOrModality.hasSets }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseOrModality.hasReps">Has Reps</span></dt>
+                <dd>
+                    <span>{{ exerciseOrModality.hasReps }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseOrModality.hasHoldTime">Has Hold Time</span></dt>
+                <dd>
+                    <span>{{ exerciseOrModality.hasHoldTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseOrModality.hasResistance">Has Resistance</span></dt>
+                <dd>
+                    <span>{{ exerciseOrModality.hasResistance }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseOrModality.hasDays">Has Days</span></dt>
+                <dd>
+                    <span>{{ exerciseOrModality.hasDays }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseOrModality.defaultSets">Default Sets</span></dt>
+                <dd>
+                    <span>{{ exerciseOrModality.defaultSets }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseOrModality.defaultReps">Default Reps</span></dt>
+                <dd>
+                    <span>{{ exerciseOrModality.defaultReps }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseOrModality.defaultHoldTime">Default Hold Time</span></dt>
+                <dd>
+                    <span>{{ exerciseOrModality.defaultHoldTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseOrModality.defaultResistance">Default Resistance</span></dt>
+                <dd>
+                    <span>{{ exerciseOrModality.defaultResistance }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseOrModality.defaultDays">Default Days</span></dt>
+                <dd>
+                    <span>{{ exerciseOrModality.defaultDays }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseOrModality.currentSuccessRate">Current Success Rate</span></dt>
+                <dd>
+                    <span>{{ exerciseOrModality.currentSuccessRate }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.exerciseOrModality.assessment">Assessment</span></dt>
+                <dd>
+                    <div *ngIf="exerciseOrModality.assessment">
+                        <a [routerLink]="['/assessment', exerciseOrModality.assessment?.id, 'view']">{{ exerciseOrModality.assessment?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/exercise-or-modality', exerciseOrModality.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

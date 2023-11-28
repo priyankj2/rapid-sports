@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="supportingVideo">
+            <h2><span jhiTranslate="rapidApp.supportingVideo.detail.title">Supporting Video</span> {{ supportingVideo.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rapidApp.supportingVideo.label">Label</span></dt>
+                <dd>
+                    <span>{{ supportingVideo.label }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.supportingVideo.videoUrl">Video Url</span></dt>
+                <dd>
+                    <span>{{ supportingVideo.videoUrl }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.supportingVideo.imageUrl">Image Url</span></dt>
+                <dd>
+                    <span>{{ supportingVideo.imageUrl }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.supportingVideo.exerciseOrModality">Exercise Or Modality</span></dt>
+                <dd>
+                    <div *ngIf="supportingVideo.exerciseOrModality">
+                        <a [routerLink]="['/exercise-or-modality', supportingVideo.exerciseOrModality?.id, 'view']">{{ supportingVideo.exerciseOrModality?.name }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.supportingVideo.clinic">Clinic</span></dt>
+                <dd>
+                    <div *ngIf="supportingVideo.clinic">
+                        <a [routerLink]="['/clinic', supportingVideo.clinic?.id, 'view']">{{ supportingVideo.clinic?.name }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/supporting-video', supportingVideo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

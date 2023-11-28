@@ -1,0 +1,21 @@
+<div id="scheduler-component">
+    <div class="col">
+        <p class="alert-light" jhiTranslate="rapidApp.sessions.messages.begin">Click on a Patient below to begin.</p>
+    </div>
+    <div class="col">
+        <kendo-scheduler [kendoSchedulerBinding]="events"
+                         [selectedDate]="selectedDate"
+                         scrollTime="08:00"
+                         (eventClick)="onSelectAppointment($event)"
+                         [editable]="false"
+                         style="height: 30rem;"
+        >
+            <kendo-scheduler-agenda-view>
+            </kendo-scheduler-agenda-view>
+            <kendo-scheduler-messages
+                eventHeader="Athlete"
+            >
+            </kendo-scheduler-messages>
+        </kendo-scheduler>
+    </div>
+</div>

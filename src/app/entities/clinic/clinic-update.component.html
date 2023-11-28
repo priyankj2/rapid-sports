@@ -1,0 +1,105 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-clinic-heading" jhiTranslate="rapidApp.clinic.home.createOrEditLabel">Create or edit a Clinic</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.clinic.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.clinic.logoUrl" for="field_logoUrl">Logo Url</label>
+                    <input type="text" class="form-control" name="logoUrl" id="field_logoUrl"
+                           formControlName="logoUrl"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.clinic.brandingText" for="field_brandingText">Branding Text</label>
+                    <input type="text" class="form-control" name="brandingText" id="field_brandingText"
+                           formControlName="brandingText"/>
+                </div>
+
+                <div class="form-group">
+                    <span>License Validity</span>
+                    <div>
+                        <input id="field_license2Months" type="radio" name="license" formControlName="license" value=60 (change)="handleRadioChange()"/>
+                        <label for="field_license2Months">2 Months</label>
+                    </div>
+                    <div>
+                        <input id="field_license1Year" type="radio" name="license" formControlName="license" value=365 (change)="handleRadioChange()"/>
+                        <label for="field_license1Year">1 Year</label>
+                    </div>
+                    <div>
+                        <input id="field_license2Year" type="radio" name="license" formControlName="license" value=730 (change)="handleRadioChange()"/>
+                        <label for="field_license2Year">2 Years</label>
+                    </div>
+                    <div>
+                        <input id="field_custom" type="radio" name="license" formControlName="license" value=0 (change)="handleRadioChange()"/>
+                        <label for="field_custom">Custom</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.clinic.licenseStartDate" for="field_trialStartDate">License Start Date</label>
+                    <div class="d-flex">
+                        <input id="field_trialStartDate" type="datetime-local" class="form-control" name="licenseStartDate" formControlName="licenseStartDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('licenseStartDate')!.invalid && (editForm.get('licenseStartDate')!.dirty || editForm.get('licenseStartDate')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('licenseStartDate')?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.get('licenseStartDate')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.clinic.licenseEndDate" for="field_trialEndDate">License End Date</label>
+                    <div class="d-flex">
+                        <input id="field_trialEndDate" type="datetime-local" class="form-control" name="licenseEndDate" formControlName="licenseEndDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('licenseEndDate')!.invalid && (editForm.get('licenseEndDate')!.dirty || editForm.get('licenseEndDate')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('licenseEndDate')?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.get('licenseEndDate')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

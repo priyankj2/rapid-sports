@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-fall-risk-range-heading" jhiTranslate="rapidApp.fallRiskRange.home.createOrEditLabel">Create or edit a Fall Risk Range</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.fallRiskRange.gender" for="field_gender">Gender</label>
+                    <select class="form-control" name="gender" formControlName="gender" id="field_gender">
+                        <option value="MALE">{{ 'rapidApp.Gender.MALE' | translate }}</option>
+                        <option value="FEMALE">{{ 'rapidApp.Gender.FEMALE' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('gender')!.invalid && (editForm.get('gender')!.dirty || editForm.get('gender')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('gender')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.fallRiskRange.minimumValue" for="field_minimumValue">Minimum Value</label>
+                    <input type="number" class="form-control" name="minimumValue" id="field_minimumValue"
+                           formControlName="minimumValue"/>
+                    <div *ngIf="editForm.get('minimumValue')!.invalid && (editForm.get('minimumValue')!.dirty || editForm.get('minimumValue')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('minimumValue')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('minimumValue')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.fallRiskRange.maximumValue" for="field_maximumValue">Maximum Value</label>
+                    <input type="number" class="form-control" name="maximumValue" id="field_maximumValue"
+                           formControlName="maximumValue"/>
+                    <div *ngIf="editForm.get('maximumValue')!.invalid && (editForm.get('maximumValue')!.dirty || editForm.get('maximumValue')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('maximumValue')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('maximumValue')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.fallRiskRange.color" for="field_color">Color</label>
+                    <input type="text" class="form-control" name="color" id="field_color"
+                           formControlName="color"/>
+                    <div *ngIf="editForm.get('color')!.invalid && (editForm.get('color')!.dirty || editForm.get('color')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('color')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.fallRiskRange.ageGroup" for="field_ageGroup">Age Group</label>
+                    <select class="form-control" id="field_ageGroup" name="ageGroup" formControlName="ageGroup">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ageGroupOption.id === editForm.get('ageGroup')!.value?.id ? editForm.get('ageGroup')!.value : ageGroupOption" *ngFor="let ageGroupOption of agegroups; trackBy: trackById">{{ ageGroupOption.minimumAge }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

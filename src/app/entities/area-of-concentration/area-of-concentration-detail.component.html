@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="areaOfConcentration">
+            <h2><span jhiTranslate="rapidApp.areaOfConcentration.detail.title">Area Of Concentration</span> {{ areaOfConcentration.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rapidApp.areaOfConcentration.name">Name</span></dt>
+                <dd>
+                    <span>{{ areaOfConcentration.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.areaOfConcentration.orthopedic">Orthopedic</span></dt>
+                <dd>
+                    <span>{{ areaOfConcentration.orthopedic }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.areaOfConcentration.description">Description</span></dt>
+                <dd>
+                    <span>{{ areaOfConcentration.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.areaOfConcentration.testResult">Test Result</span></dt>
+                <dd>
+                    <div *ngIf="areaOfConcentration.testResult">
+                        <a [routerLink]="['/test-result', areaOfConcentration.testResult?.id, 'view']">{{ areaOfConcentration.testResult?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.areaOfConcentration.assessment">Assessment</span></dt>
+                <dd>
+                    <div *ngIf="areaOfConcentration.assessment">
+                        <a [routerLink]="['/assessment', areaOfConcentration.assessment?.id, 'view']">{{ areaOfConcentration.assessment?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/area-of-concentration', areaOfConcentration.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

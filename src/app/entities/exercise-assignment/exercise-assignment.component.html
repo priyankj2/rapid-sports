@@ -1,0 +1,83 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="rapidApp.exerciseAssignment.home.title">Exercise Assignments</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-exercise-assignment" [routerLink]="['/exercise-assignment/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="rapidApp.exerciseAssignment.home.createLabel">
+            Create a new Exercise Assignment
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="exerciseAssignments?.length === 0">
+        <span jhiTranslate="rapidApp.exerciseAssignment.home.notFound">No exerciseAssignments found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="exerciseAssignments?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.exerciseAssignment.sets">Sets</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.exerciseAssignment.reps">Reps</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.exerciseAssignment.holdTime">Hold Time</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.exerciseAssignment.resistance">Resistance</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.exerciseAssignment.days">Days</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.exerciseAssignment.custom">Custom</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.exerciseAssignment.exerciseOrModality">Exercise Or Modality</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.exerciseAssignment.patientCourseOfAction">Patient Course Of Action</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let exerciseAssignment of exerciseAssignments ;trackBy: trackId">
+                    <td><a [routerLink]="['/exercise-assignment', exerciseAssignment.id, 'view']">{{ exerciseAssignment.id }}</a></td>
+                    <td>{{ exerciseAssignment.sets }}</td>
+                    <td>{{ exerciseAssignment.reps }}</td>
+                    <td>{{ exerciseAssignment.holdTime }}</td>
+                    <td>{{ exerciseAssignment.resistance }}</td>
+                    <td>{{ exerciseAssignment.days }}</td>
+                    <td>{{ exerciseAssignment.custom }}</td>
+                    <td>
+                        <div *ngIf="exerciseAssignment.exerciseOrModality">
+                            <a [routerLink]="['/exercise-or-modality', exerciseAssignment.exerciseOrModality?.id, 'view']" >{{ exerciseAssignment.exerciseOrModality?.name }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="exerciseAssignment.patientCourseOfAction">
+                            <a [routerLink]="['/athlete-course-of-action', exerciseAssignment.patientCourseOfAction?.id, 'view']" >{{ exerciseAssignment.patientCourseOfAction?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/exercise-assignment', exerciseAssignment.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/exercise-assignment', exerciseAssignment.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(exerciseAssignment)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

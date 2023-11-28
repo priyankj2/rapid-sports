@@ -1,0 +1,75 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="rapidApp.footDecodingMeasurement.home.title">Foot Decoding Measurements</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-foot-decoding-measurement" [routerLink]="['/foot-decoding-measurement/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="rapidApp.footDecodingMeasurement.home.createLabel">
+            Create a new Foot Decoding Measurement
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="footDecodingMeasurements?.length === 0">
+        <span jhiTranslate="rapidApp.footDecodingMeasurement.home.notFound">No footDecodingMeasurements found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="footDecodingMeasurements?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.footDecodingMeasurement.leftFront">Left Front</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.footDecodingMeasurement.leftHeel">Left Heel</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.footDecodingMeasurement.rightFront">Right Front</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.footDecodingMeasurement.rightHeel">Right Heel</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.footDecodingMeasurement.centerOfPressure">Center Of Pressure</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.footDecodingMeasurement.footDecodingMeasurementRaw">Foot Decoding Measurement Raw</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let footDecodingMeasurement of footDecodingMeasurements ;trackBy: trackId">
+                    <td><a [routerLink]="['/foot-decoding-measurement', footDecodingMeasurement.id, 'view']">{{ footDecodingMeasurement.id }}</a></td>
+                    <td>{{ footDecodingMeasurement.leftFront }}</td>
+                    <td>{{ footDecodingMeasurement.leftHeel }}</td>
+                    <td>{{ footDecodingMeasurement.rightFront }}</td>
+                    <td>{{ footDecodingMeasurement.rightHeel }}</td>
+                    <td>{{ footDecodingMeasurement.centerOfPressure }}</td>
+                    <td>
+                        <div *ngIf="footDecodingMeasurement.footDecodingMeasurementRaw">
+                            <a [routerLink]="['/foot-decoding-measurement-raw', footDecodingMeasurement.footDecodingMeasurementRaw?.id, 'view']" >{{ footDecodingMeasurement.footDecodingMeasurementRaw?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/foot-decoding-measurement', footDecodingMeasurement.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/foot-decoding-measurement', footDecodingMeasurement.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(footDecodingMeasurement)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

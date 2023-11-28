@@ -1,0 +1,47 @@
+<kendo-dialog *ngIf="active" [width]="525" (close)="closeForm()">
+    <kendo-dialog-titlebar>
+        Add Note
+    </kendo-dialog-titlebar>
+
+    <form novalidate class="k-form" [formGroup]="editForm">
+        <kendo-formfield>
+            <kendo-editor formControlName="noteText"
+                          required
+                          style="height: 300px;width: 500px;background-color: white;">
+                <kendo-toolbar>
+                    <kendo-toolbar-buttongroup>
+                        <kendo-toolbar-button kendoEditorBoldButton></kendo-toolbar-button>
+                        <kendo-toolbar-button kendoEditorItalicButton></kendo-toolbar-button>
+                        <kendo-toolbar-button
+                            kendoEditorUnderlineButton
+                        ></kendo-toolbar-button>
+                        <kendo-toolbar-button
+                            kendoEditorStrikethroughButton
+                        ></kendo-toolbar-button>
+                    </kendo-toolbar-buttongroup>
+                    <kendo-toolbar-buttongroup>
+                        <kendo-toolbar-button
+                            kendoEditorInsertUnorderedListButton
+                        ></kendo-toolbar-button>
+                        <kendo-toolbar-button
+                            kendoEditorInsertOrderedListButton
+                        ></kendo-toolbar-button>
+                        <kendo-toolbar-button kendoEditorIndentButton></kendo-toolbar-button>
+                        <kendo-toolbar-button kendoEditorOutdentButton></kendo-toolbar-button>
+                    </kendo-toolbar-buttongroup>
+                    <kendo-toolbar-buttongroup>
+                        <kendo-toolbar-button kendoEditorUndoButton></kendo-toolbar-button>
+                        <kendo-toolbar-button kendoEditorRedoButton></kendo-toolbar-button>
+                    </kendo-toolbar-buttongroup>
+                </kendo-toolbar>
+            </kendo-editor>
+            <kendo-formhint>Type note text</kendo-formhint>
+            <kendo-formerror>Error: Note Text is required</kendo-formerror>
+        </kendo-formfield>
+    </form>
+
+    <kendo-dialog-actions>
+        <button class="btn btn-light btn-lg" (click)="onCancel($event)">Cancel</button>
+        <button class="btn btn-primary btn-lg" [disabled]="!editForm.valid" (click)="onSave($event)">Save</button>
+    </kendo-dialog-actions>
+</kendo-dialog>

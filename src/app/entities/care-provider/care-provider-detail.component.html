@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="careProvider">
+            <h2><span jhiTranslate="rapidApp.careProvider.detail.title">Care Provider</span> {{ careProvider.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rapidApp.careProvider.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{ careProvider.firstName }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.careProvider.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{ careProvider.lastName }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.careProvider.email">Email</span></dt>
+                <dd>
+                    <span>{{ careProvider.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.careProvider.officeAdministrator">Office Administrator</span></dt>
+                <dd>
+                    <span>{{ careProvider.officeAdministrator }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.careProvider.user">User</span></dt>
+                <dd>
+                    {{ careProvider.user?.login }}
+                </dd>
+                <dt><span jhiTranslate="rapidApp.careProvider.clinic">Clinic</span></dt>
+                <dd>
+                    <div *ngIf="careProvider.clinic">
+                        <a [routerLink]="['/clinic', careProvider.clinic?.id, 'view']">{{ careProvider.clinic?.name }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/coach', careProvider.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

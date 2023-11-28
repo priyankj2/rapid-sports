@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-balance-percentile-heading" jhiTranslate="rapidApp.balancePercentile.home.createOrEditLabel">Create or edit a Balance Percentile</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.balancePercentile.gender" for="field_gender">Gender</label>
+                    <select class="form-control" name="gender" formControlName="gender" id="field_gender">
+                        <option value="MALE">{{ 'rapidApp.Gender.MALE' | translate }}</option>
+                        <option value="FEMALE">{{ 'rapidApp.Gender.FEMALE' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('gender')!.invalid && (editForm.get('gender')!.dirty || editForm.get('gender')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('gender')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.balancePercentile.testCode" for="field_testCode">Test Code</label>
+                    <select class="form-control" name="testCode" formControlName="testCode" id="field_testCode">
+                        <option value="STD">{{ 'rapidApp.TestCode.STD' | translate }}</option>
+                        <option value="PRO">{{ 'rapidApp.TestCode.PRO' | translate }}</option>
+                        <option value="VIS">{{ 'rapidApp.TestCode.VIS' | translate }}</option>
+                        <option value="VES">{{ 'rapidApp.TestCode.VES' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('testCode')!.invalid && (editForm.get('testCode')!.dirty || editForm.get('testCode')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('testCode')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.balancePercentile.minimumLength" for="field_minimumLength">Minimum Length</label>
+                    <input type="number" class="form-control" name="minimumLength" id="field_minimumLength"
+                           formControlName="minimumLength"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.balancePercentile.percentileRank" for="field_percentileRank">Percentile Rank</label>
+                    <input type="number" class="form-control" name="percentileRank" id="field_percentileRank"
+                           formControlName="percentileRank"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.balancePercentile.ageGroup" for="field_ageGroup">Age Group</label>
+                    <select class="form-control" id="field_ageGroup" name="ageGroup" formControlName="ageGroup">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ageGroupOption.id === editForm.get('ageGroup')!.value?.id ? editForm.get('ageGroup')!.value : ageGroupOption" *ngFor="let ageGroupOption of agegroups; trackBy: trackById">{{ ageGroupOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

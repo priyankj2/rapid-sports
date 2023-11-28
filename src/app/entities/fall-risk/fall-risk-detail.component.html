@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="fallRisk">
+            <h2><span jhiTranslate="rapidApp.fallRisk.detail.title">Fall Risk</span> {{ fallRisk.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rapidApp.fallRisk.gender">Gender</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'rapidApp.Gender.' + fallRisk.gender }}">{{ fallRisk.gender }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.fallRisk.minimumLength">Minimum Length</span></dt>
+                <dd>
+                    <span>{{ fallRisk.minimumLength }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.fallRisk.percentileRank">Percentile Rank</span></dt>
+                <dd>
+                    <span>{{ fallRisk.percentileRank }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.fallRisk.ageGroup">Age Group</span></dt>
+                <dd>
+                    <div *ngIf="fallRisk.ageGroup">
+                        <a [routerLink]="['/age-group', fallRisk.ageGroup?.id, 'view']">{{ fallRisk.ageGroup?.minimumAge }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/fall-risk', fallRisk.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

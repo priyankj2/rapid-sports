@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="footType">
+            <h2><span jhiTranslate="rapidApp.footType.detail.title">Foot Type</span> {{ footType.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rapidApp.footType.name">Name</span></dt>
+                <dd>
+                    <span>{{ footType.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footType.description">Description</span></dt>
+                <dd>
+                    <span>{{ footType.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footType.leftFront">Left Front</span></dt>
+                <dd>
+                    <span>{{ footType.leftFront }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footType.leftHeel">Left Heel</span></dt>
+                <dd>
+                    <span>{{ footType.leftHeel }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footType.rightFront">Right Front</span></dt>
+                <dd>
+                    <span>{{ footType.rightFront }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footType.rightHeel">Right Heel</span></dt>
+                <dd>
+                    <span>{{ footType.rightHeel }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footType.leftFootDescription">Left Foot Description</span></dt>
+                <dd>
+                    <span>{{ footType.leftFootDescription }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footType.rightFootDescription">Right Foot Description</span></dt>
+                <dd>
+                    <span>{{ footType.rightFootDescription }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footType.forefootMedial">Forefoot Medial</span></dt>
+                <dd>
+                    <span>{{ footType.forefootMedial }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footType.forefootLateral">Forefoot Lateral</span></dt>
+                <dd>
+                    <span>{{ footType.forefootLateral }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footType.midfootMedial">Midfoot Medial</span></dt>
+                <dd>
+                    <span>{{ footType.midfootMedial }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footType.midfootLateral">Midfoot Lateral</span></dt>
+                <dd>
+                    <span>{{ footType.midfootLateral }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footType.rearfootMedial">Rearfoot Medial</span></dt>
+                <dd>
+                    <span>{{ footType.rearfootMedial }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footType.rearfootLateral">Rearfoot Lateral</span></dt>
+                <dd>
+                    <span>{{ footType.rearfootLateral }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.footType.orthoCondition">Ortho Condition</span></dt>
+                <dd>
+                    <span>{{ footType.orthoCondition }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/foot-type', footType.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="courseOfActionMapping">
+            <h2><span jhiTranslate="rapidApp.courseOfActionMapping.detail.title">Course Of Action Mapping</span> {{ courseOfActionMapping.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="rapidApp.courseOfActionMapping.label">Label</span></dt>
+                <dd>
+                    <span>{{ courseOfActionMapping.label }}</span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.courseOfActionMapping.condition">Condition</span></dt>
+                <dd>
+                    <div *ngIf="courseOfActionMapping.condition">
+                        <a [routerLink]="['/condition', courseOfActionMapping.condition?.id, 'view']">{{ courseOfActionMapping.condition?.name }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.courseOfActionMapping.footType">Foot Type</span></dt>
+                <dd>
+                    <div *ngIf="courseOfActionMapping.footType">
+                        <a [routerLink]="['/foot-type', courseOfActionMapping.footType?.id, 'view']">{{ courseOfActionMapping.footType?.name }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.courseOfActionMapping.areaOfConcentration">Area Of Concentration</span></dt>
+                <dd>
+                    <div *ngIf="courseOfActionMapping.areaOfConcentration">
+                        <a [routerLink]="['/area-of-concentration', courseOfActionMapping.areaOfConcentration?.id, 'view']">{{ courseOfActionMapping.areaOfConcentration?.name }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.courseOfActionMapping.clinic">Clinic</span></dt>
+                <dd>
+                    <div *ngIf="courseOfActionMapping.clinic">
+                        <a [routerLink]="['/clinic', courseOfActionMapping.clinic?.id, 'view']">{{ courseOfActionMapping.clinic?.name }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.courseOfActionMapping.exercise">Exercise</span></dt>
+                <dd>
+                    <span *ngFor="let exercise of courseOfActionMapping.exercises; let last = last">
+                        <a [routerLink]="['/exercise-or-modality', exercise?.id, 'view']">{{ exercise.name }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="rapidApp.courseOfActionMapping.observation">Observation</span></dt>
+                <dd>
+                    <div *ngIf="courseOfActionMapping.observation">
+                        <a [routerLink]="['/observation', courseOfActionMapping.observation?.id, 'view']">{{ courseOfActionMapping.observation?.name }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/course-of-action-mapping', courseOfActionMapping.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

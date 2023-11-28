@@ -1,0 +1,140 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-patient-heading" jhiTranslate="rapidApp.patient.home.createOrEditLabel">Create or edit a Patient</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.patient.firstName" for="field_firstName">First Name</label>
+                    <input type="text" class="form-control" name="firstName" id="field_firstName"
+                           formControlName="firstName"/>
+                    <div *ngIf="editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('firstName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.patient.lastName" for="field_lastName">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" id="field_lastName"
+                           formControlName="lastName"/>
+                    <div *ngIf="editForm.get('lastName')!.invalid && (editForm.get('lastName')!.dirty || editForm.get('lastName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('lastName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.patient.gender" for="field_gender">Gender</label>
+                    <select class="form-control" name="gender" formControlName="gender" id="field_gender">
+                        <option value="MALE">{{ 'rapidApp.Gender.MALE' | translate }}</option>
+                        <option value="FEMALE">{{ 'rapidApp.Gender.FEMALE' | translate }}</option>
+                        <option value="OTHER">{{ 'rapidApp.Gender.OTHER' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('gender')!.invalid && (editForm.get('gender')!.dirty || editForm.get('gender')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('gender')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.patient.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                    <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email')?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Email' }">
+                            This field should follow pattern for "Email".
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.patient.dateOfBirth" for="field_dateOfBirth">Date Of Birth</label>
+                    <div class="d-flex">
+                        <kendo-datepicker id="field_dateOfBirth" formControlName="dateOfBirth" required></kendo-datepicker>
+                    </div>
+                    <div *ngIf="editForm.get('dateOfBirth')!.invalid && (editForm.get('dateOfBirth')!.dirty || editForm.get('dateOfBirth')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dateOfBirth')?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.patient.medicalHistory" for="field_medicalHistory">Medical History</label>
+                    <input type="text" class="form-control" name="medicalHistory" id="field_medicalHistory"
+                           formControlName="medicalHistory"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.patient.patientID" for="field_patientID">Patient ID</label>
+                    <input type="text" class="form-control" name="patientID" id="field_patientID"
+                           formControlName="patientID"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.patient.therapyWeeks" for="field_therapyWeeks">Therapy Weeks</label>
+                    <input type="number" class="form-control" name="therapyWeeks" id="field_therapyWeeks"
+                           formControlName="therapyWeeks"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.patient.primaryComplaint" for="field_primaryComplaint">Primary Complaint</label>
+                    <select class="form-control" id="field_primaryComplaint" name="primaryComplaint" formControlName="primaryComplaint">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="conditionOption.id === editForm.get('primaryComplaint')!.value?.id ? editForm.get('primaryComplaint')!.value : conditionOption" *ngFor="let conditionOption of conditions; trackBy: trackById">{{ conditionOption.name }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('primaryComplaint')!.invalid && (editForm.get('primaryComplaint')!.dirty || editForm.get('primaryComplaint')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('primaryComplaint')?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.patient.clinic" for="field_clinic">Clinic</label>
+                    <select class="form-control" id="field_clinic" name="clinic" formControlName="clinic">
+                        <option [ngValue]="null">Select One</option>
+                        <option [ngValue]="clinicOption.id === editForm.get('clinic')!.value?.id ? editForm.get('clinic')!.value : clinicOption" *ngFor="let clinicOption of clinics; trackBy: trackById">{{ clinicOption.name }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('clinic')!.invalid && (editForm.get('clinic')!.dirty || editForm.get('clinic')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('clinic')?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

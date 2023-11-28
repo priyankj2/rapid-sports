@@ -1,0 +1,83 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="rapidApp.observation.home.title">Observations</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-observation" [routerLink]="['/observation/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="rapidApp.observation.home.createLabel">
+            Create a new Observation
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="observations?.length === 0">
+        <span jhiTranslate="rapidApp.observation.home.notFound">No observations found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="observations?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.observation.name">Name</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.observation.description">Description</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.observation.instructionalText">Instructional Text</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.observation.exampleImageUrl">Example Image Url</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.observation.internalCode">Internal Code</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.observation.observationDuration">Observation Duration</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.observation.enabled">Enabled</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.observation.displayOrder">Display Order</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.observation.category">Category</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.observation.focusStageNumber">Focus Stage Number</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.observation.stageCount">Stage Count</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.observation.visible">Visible</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let observation of observations ;trackBy: trackId">
+                    <td><a [routerLink]="['/observation', observation.id, 'view']">{{ observation.id }}</a></td>
+                    <td>{{ observation.name }}</td>
+                    <td>{{ observation.description }}</td>
+                    <td>{{ observation.instructionalText }}</td>
+                    <td>{{ observation.exampleImageUrl }}</td>
+                    <td>{{ observation.internalCode }}</td>
+                    <td>{{ observation.observationDuration }}</td>
+                    <td>{{ observation.enabled }}</td>
+                    <td>{{ observation.displayOrder }}</td>
+                    <td>{{ observation.category }}</td>
+                    <td>{{ observation.focusStageNumber }}</td>
+                    <td>{{ observation.stageCount }}</td>
+                    <td>{{ observation.visible }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/observation', observation.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/observation', observation.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(observation)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

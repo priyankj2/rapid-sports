@@ -1,0 +1,227 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-assessment-heading" jhiTranslate="rapidApp.assessment.home.createOrEditLabel">Create or edit a Assessment</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.startTime" for="field_startTime">Start Time</label>
+                    <div class="d-flex">
+                        <input id="field_startTime" type="datetime-local" class="form-control" name="startTime" formControlName="startTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.selfAdministered" for="field_selfAdministered">Self Administered</label>
+                    <input type="checkbox" class="form-control" name="selfAdministered" id="field_selfAdministered"
+                           formControlName="selfAdministered"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.score" for="field_score">Score</label>
+                    <input type="number" class="form-control" name="score" id="field_score"
+                           formControlName="score"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.standardPathLength" for="field_standardPathLength">Standard Path Length</label>
+                    <input type="number" class="form-control" name="standardPathLength" id="field_standardPathLength"
+                           formControlName="standardPathLength"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.proPathLength" for="field_proPathLength">Pro Path Length</label>
+                    <input type="number" class="form-control" name="proPathLength" id="field_proPathLength"
+                           formControlName="proPathLength"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.visionPathLength" for="field_visionPathLength">Vision Path Length</label>
+                    <input type="number" class="form-control" name="visionPathLength" id="field_visionPathLength"
+                           formControlName="visionPathLength"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.vestibularPathLength" for="field_vestibularPathLength">Vestibular Path Length</label>
+                    <input type="number" class="form-control" name="vestibularPathLength" id="field_vestibularPathLength"
+                           formControlName="vestibularPathLength"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.standardPercentile" for="field_standardPercentile">Standard Percentile</label>
+                    <input type="number" class="form-control" name="standardPercentile" id="field_standardPercentile"
+                           formControlName="standardPercentile"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.proPercentile" for="field_proPercentile">Pro Percentile</label>
+                    <input type="number" class="form-control" name="proPercentile" id="field_proPercentile"
+                           formControlName="proPercentile"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.visionPercentile" for="field_visionPercentile">Vision Percentile</label>
+                    <input type="number" class="form-control" name="visionPercentile" id="field_visionPercentile"
+                           formControlName="visionPercentile"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.vestibularPercentile" for="field_vestibularPercentile">Vestibular Percentile</label>
+                    <input type="number" class="form-control" name="vestibularPercentile" id="field_vestibularPercentile"
+                           formControlName="vestibularPercentile"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.leftFrontPressure" for="field_leftFrontPressure">Left Front Pressure</label>
+                    <input type="number" class="form-control" name="leftFrontPressure" id="field_leftFrontPressure"
+                           formControlName="leftFrontPressure"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.leftRearPressure" for="field_leftRearPressure">Left Rear Pressure</label>
+                    <input type="number" class="form-control" name="leftRearPressure" id="field_leftRearPressure"
+                           formControlName="leftRearPressure"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.rightFrontPressure" for="field_rightFrontPressure">Right Front Pressure</label>
+                    <input type="number" class="form-control" name="rightFrontPressure" id="field_rightFrontPressure"
+                           formControlName="rightFrontPressure"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.rightRearPressure" for="field_rightRearPressure">Right Rear Pressure</label>
+                    <input type="number" class="form-control" name="rightRearPressure" id="field_rightRearPressure"
+                           formControlName="rightRearPressure"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.centerOfPressureX" for="field_centerOfPressureX">Center Of Pressure X</label>
+                    <input type="number" class="form-control" name="centerOfPressureX" id="field_centerOfPressureX"
+                           formControlName="centerOfPressureX"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.centerOfPressureY" for="field_centerOfPressureY">Center Of Pressure Y</label>
+                    <input type="number" class="form-control" name="centerOfPressureY" id="field_centerOfPressureY"
+                           formControlName="centerOfPressureY"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.painLevel" for="field_painLevel">Pain Level</label>
+                    <input type="number" class="form-control" name="painLevel" id="field_painLevel"
+                           formControlName="painLevel"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.notes" for="field_notes">Notes</label>
+                    <input type="text" class="form-control" name="notes" id="field_notes"
+                           formControlName="notes"/>
+                    <div *ngIf="editForm.get('notes')!.invalid && (editForm.get('notes')!.dirty || editForm.get('notes')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('notes')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 2000 }">
+                        This field cannot be longer than 2000 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.imageData" for="field_imageData">Image Data</label>
+                    <select class="form-control" id="field_imageData" name="imageData" formControlName="imageData">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="imageDataOption.id === editForm.get('imageData')!.value?.id ? editForm.get('imageData')!.value : imageDataOption" *ngFor="let imageDataOption of imagedata; trackBy: trackById">{{ imageDataOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.careProvider" for="field_careProvider">Care Provider</label>
+                    <select class="form-control" id="field_careProvider" name="careProvider" formControlName="careProvider">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="careProviderOption.id === editForm.get('careProvider')!.value?.id ? editForm.get('careProvider')!.value : careProviderOption" *ngFor="let careProviderOption of careproviders; trackBy: trackById">{{ careProviderOption.lastName }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.observation" for="field_observation">Observation</label>
+                    <select class="form-control" id="field_observation" name="observation" formControlName="observation">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="observationOption.id === editForm.get('observation')!.value?.id ? editForm.get('observation')!.value : observationOption" *ngFor="let observationOption of observations; trackBy: trackById">{{ observationOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.measurement" for="field_measurement">Measurement</label>
+                    <select class="form-control" id="field_measurement" name="measurement" formControlName="measurement">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="footDecodingMeasurementOption.id === editForm.get('measurement')!.value?.id ? editForm.get('measurement')!.value : footDecodingMeasurementOption" *ngFor="let footDecodingMeasurementOption of footdecodingmeasurements; trackBy: trackById">{{ footDecodingMeasurementOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.footType" for="field_footType">Foot Type</label>
+                    <select class="form-control" id="field_footType" name="footType" formControlName="footType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="footTypeOption.id === editForm.get('footType')!.value?.id ? editForm.get('footType')!.value : footTypeOption" *ngFor="let footTypeOption of foottypes; trackBy: trackById">{{ footTypeOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.leftFootType" for="field_leftFootType">Left Foot Type</label>
+                    <select class="form-control" id="field_leftFootType" name="leftFootType" formControlName="leftFootType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="footTypeOption.id === editForm.get('leftFootType')!.value?.id ? editForm.get('leftFootType')!.value : footTypeOption" *ngFor="let footTypeOption of foottypes; trackBy: trackById">{{ footTypeOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.rightFootType" for="field_rightFootType">Right Foot Type</label>
+                    <select class="form-control" id="field_rightFootType" name="rightFootType" formControlName="rightFootType">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="footTypeOption.id === editForm.get('rightFootType')!.value?.id ? editForm.get('rightFootType')!.value : footTypeOption" *ngFor="let footTypeOption of foottypes; trackBy: trackById">{{ footTypeOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.condition" for="field_condition">Condition</label>
+                    <select class="form-control" id="field_condition" name="condition" formControlName="condition">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="conditionOption.id === editForm.get('condition')!.value?.id ? editForm.get('condition')!.value : conditionOption" *ngFor="let conditionOption of conditions; trackBy: trackById">{{ conditionOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.appointment" for="field_appointment">Appointment</label>
+                    <select class="form-control" id="field_appointment" name="appointment" formControlName="appointment">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="appointmentOption.id === editForm.get('appointment')!.value?.id ? editForm.get('appointment')!.value : appointmentOption" *ngFor="let appointmentOption of appointments; trackBy: trackById">{{ appointmentOption.startTime }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="rapidApp.assessment.patient" for="field_patient">Patient</label>
+                    <select class="form-control" id="field_patient" name="patient" formControlName="patient">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="patientOption.id === editForm.get('patient')!.value?.id ? editForm.get('patient')!.value : patientOption" *ngFor="let patientOption of patients; trackBy: trackById">{{ patientOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

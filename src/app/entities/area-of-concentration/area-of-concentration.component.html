@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="rapidApp.areaOfConcentration.home.title">Area Of Concentrations</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-area-of-concentration" [routerLink]="['/area-of-concentration/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="rapidApp.areaOfConcentration.home.createLabel">
+            Create a new Area Of Concentration
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="areaOfConcentrations?.length === 0">
+        <span jhiTranslate="rapidApp.areaOfConcentration.home.notFound">No areaOfConcentrations found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="areaOfConcentrations?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.areaOfConcentration.name">Name</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.areaOfConcentration.orthopedic">Orthopedic</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.areaOfConcentration.description">Description</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.areaOfConcentration.testResult">Test Result</span></th>
+                    <th scope="col" ><span jhiTranslate="rapidApp.areaOfConcentration.assessment">Assessment</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let areaOfConcentration of areaOfConcentrations ;trackBy: trackId">
+                    <td><a [routerLink]="['/area-of-concentration', areaOfConcentration.id, 'view']">{{ areaOfConcentration.id }}</a></td>
+                    <td>{{ areaOfConcentration.name }}</td>
+                    <td>{{ areaOfConcentration.orthopedic }}</td>
+                    <td>{{ areaOfConcentration.description }}</td>
+                    <td>
+                        <div *ngIf="areaOfConcentration.testResult">
+                            <a [routerLink]="['/test-result', areaOfConcentration.testResult?.id, 'view']" >{{ areaOfConcentration.testResult?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="areaOfConcentration.assessment">
+                            <a [routerLink]="['/assessment', areaOfConcentration.assessment?.id, 'view']" >{{ areaOfConcentration.assessment?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/area-of-concentration', areaOfConcentration.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/area-of-concentration', areaOfConcentration.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(areaOfConcentration)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

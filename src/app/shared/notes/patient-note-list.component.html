@@ -1,0 +1,31 @@
+<div class="patient-note-list">
+    <kendo-grid
+        [data]="notes"
+        [loading]="loading"
+        (add)="addHandler($event)">
+        <ng-template kendoGridToolbarTemplate class="no-pdf">
+            <div>
+                <div class="title">Athlete Notes</div>
+                <div class="no-pdf">
+                    &nbsp;&nbsp;<button kendoGridAddCommand>Add Note</button>
+                </div>
+            </div>
+        </ng-template>
+        <kendo-grid-column title="Note" field="noteText">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <div [innerHtml]="dataItem.noteText"></div>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column title="Date" field="dateCreated">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                {{dataItem.dateCreated | date:'medium'}}
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column title="By" field="createdBy.login"></kendo-grid-column>
+    </kendo-grid>
+
+    <jhi-patient-note-edit-form [model]="editDataItem"
+                                (save)="saveHandler($event)"
+                                (cancel)="cancelHandler()">
+    </jhi-patient-note-edit-form>
+</div>
