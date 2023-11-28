@@ -16,7 +16,8 @@
 <button (click)="captureImage()" *ngIf="started==true">Capture</button>
 <button (click)="flip()" *ngIf="started==true">Flip</button>
 <button (click)="stopCam()" *ngIf="started==true">Stop</button>
-<button (click)="storeFile()" *ngIf="started==true">Stop</button>
+<button (click)="startRecording()" *ngIf="started==true">Start Recording</button>
+<button (click)="stopRecording()" *ngIf="started==true">Stop Recording</button>
 <div *ngFor="let image of images">
 <img [src]="image">
 </div>
@@ -24,3 +25,5 @@
 <!--  *ngIf="started==true" -->
 <video class="mirror-video" video id="delayedVideo" autoplay playsinline #videoElement  width="100%" height="50%"></video>
 <video src=""></video>
+<!-- 
+<canvas #canvasElement width="300" height="300" style="border:1px solid #000;"></canvas> -->
