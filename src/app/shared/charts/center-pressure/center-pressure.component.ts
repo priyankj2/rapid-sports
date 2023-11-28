@@ -18,18 +18,6 @@ export class CenterPressureComponent {
       chart: any,
       ctx: any = document.getElementById('areaChart3') as HTMLElement;
 
-    // JSON:
-    // Uncomment below and import * as data from 'json-path.json'.
-    // Or Angular 14, create anonymous JSON array and fetch with http
-    // constructor(private _http; HttpClient) {} ...
-    // Replace datasets with dataArray
-
-    // for (let key in chartData.items) {
-    //   if (chartData.items.hasOwnProperty(key)) {
-    //     this.dataArray.push(chartData.items[key]);
-    //   }
-    // }
-
     data = {
       labels: ['Apples', 'Oranges', 'Mixed Fruit'],
       datasets: [
@@ -57,20 +45,8 @@ export class CenterPressureComponent {
     options = {
       responsive: true,
       maintainAspectRatio: false,
-      title: {
-        display: true,
-        position: 'top',
-        text: 'Apples to Oranges',
-        fontSize: 12,
-        fontColor: '#666',
-      },
       legend: {
-        display: true,
-        position: 'bottom',
-        labels: {
-          fontColor: '#999',
-          fontSize: 14,
-        },
+        display: false,
       },
     };
 

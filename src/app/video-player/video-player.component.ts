@@ -24,7 +24,7 @@ export class VideoPlayerComponent implements OnInit {
   
   ngOnInit(): void {
     // this.startVideo();
-    this.startCamera();
+    // this.startCamera();
   }
   
   startCamera() {
@@ -38,9 +38,9 @@ export class VideoPlayerComponent implements OnInit {
     const cameraPreviewOptions: CameraPreviewOptions = {
       position: 'rear',
       height: 200,
-      width: 200,
-      x:10,
-      y:10
+      width: 300,
+      x:100,
+      y:50
     };
     CameraPreview.start(cameraPreviewOptions).then(() => {});
   }
@@ -125,6 +125,7 @@ export class VideoPlayerComponent implements OnInit {
       position: 'front',
       width: window.screen.width,
       height: window.screen.height,
+      storeToFile: true
     };
     
     CameraPreview.startRecordVideo(cameraPreviewOptions);

@@ -56,20 +56,8 @@ export class VerticalForceComponent {
     options = {
       responsive: true,
       maintainAspectRatio: false,
-      title: {
-        display: true,
-        position: 'top',
-        text: 'Apples to Oranges',
-        fontSize: 12,
-        fontColor: '#666',
-      },
       legend: {
-        display: true,
-        position: 'bottom',
-        labels: {
-          fontColor: '#999',
-          fontSize: 14,
-        },
+        display: false,
       },
     };
 

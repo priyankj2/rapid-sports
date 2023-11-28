@@ -20,7 +20,7 @@ export class DelayedVideoComponent {
   constructor(public videoService: VideoService, private changeDetector: ChangeDetectorRef) {
   }
   async ngAfterViewInit() {
-    // this.videos = await this.videoService.loadVideos();
+    this.videos = await this.videoService.loadVideos();
 
     // Initialise the video player plugin
     if (Capacitor.isNative) {
