@@ -1,33 +1,18 @@
   <!-- <app-video-player></app-video-player> -->
 <div class="main-wrapper">
-  <!-- Header Start Here -->
-  <header class="header-wrap">
-    <div class="container-fluid">
-       Logo
-    </div>
-  </header>
-    <!-- Header End Here -->
+  <app-header class="header-wrap"></app-header>
 
   <div class="left-right-content">
-    <!-- sidenav start here -->
-    <div class="sidenav-wrap">
-      nav
-    </div>
-    <!-- sidenav end here -->
-
+    <app-sidenav class="header-wrap"></app-sidenav>
     <!-- right section start here -->
     <div class="right-content-wrap">
 
       <!-- video frame and pitch html start here -->
       <div class="pitch-info-wrap">
         <div class="pitch-left-wrap">
-          <div class="video-wrap">
-            <img src="assets/images/video-frame.jpg" alt="video frame"/>
-          </div>
-          <div class="">
-            <img src="assets/images/moment-info.jpg" alt="moment"/>
-          </div>
+          <app-video-player></app-video-player>
         </div>
+
         <div class="pitch-right-wrap">
           <h5 class="heading"> Pitch Type: Fastball </h5>
           <div class="card-wrap">
@@ -39,32 +24,11 @@
             </div>
           </div>
 
-          <div class="card-wrap">
-            <div class="card-head">
-              Pressure and Stance
-            </div>
-            <div class="card-body">
-              <img src="assets/images/moment-info.jpg" alt="moment"/>
-            </div>
-          </div>
+          <app-vertical-force></app-vertical-force>
 
-          <div class="card-wrap">
-            <div class="card-head">
-              Pressure and Stance
-            </div>
-            <div class="card-body">
-              <img src="assets/images/moment-info.jpg" alt="moment"/>
-            </div>
-          </div>
+          <app-center-pressure></app-center-pressure>
 
-          <div class="card-wrap">
-            <div class="card-head">
-              Pressure and Stance
-            </div>
-            <div class="card-body">
-              <img src="assets/images/moment-info.jpg" alt="moment"/>
-            </div>
-          </div>
+          <app-tempo-rhythm></app-tempo-rhythm>
         </div>
         
       </div>
