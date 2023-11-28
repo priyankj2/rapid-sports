@@ -22,7 +22,7 @@ export class VideoPlayerComponent implements OnInit {
     // this.startCamera();
   }
   startCamera() {
-    this.startVideo();
+    // this.startVideo();
     if(this.stopped){
       this.images=[];
     }
@@ -104,5 +104,9 @@ export class VideoPlayerComponent implements OnInit {
     if (video) {
       video.pause();
     }
+  }
+
+  storeFile() {
+    console.log( <HTMLVideoElement>document.getElementById('video'))
   }
 }
