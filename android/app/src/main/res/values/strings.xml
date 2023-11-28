@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">rapid-cap-app</string>
+    <string name="title_activity_main">rapid-cap-app</string>
+    <string name="package_name">com.rapid.sports</string>
+    <string name="custom_url_scheme">com.rapid.sports</string>
+</resources>

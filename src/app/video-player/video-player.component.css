@@ -1,6 +1,4 @@
-/* styles.css */
 
-/* General styling */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
@@ -13,17 +11,14 @@ body {
   background-color: #f4f4f4;
 }
 
-/* Header styling */
 h2 {
   color: #333;
   margin-bottom: 20px;
 }
 
-/* Video container styling */
 #cameraPreview {
   width: 100%;
   max-width: 600px;
-  /* border: 2px solid #333; */
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 20px;
@@ -32,7 +27,7 @@ h2 {
   border: 2px solid #333;
 
 }
-/* Buttons styling */
+
 button {
   background-color: #4caf50;
   color: #fff;
@@ -44,19 +39,14 @@ button {
   font-size: 16px;
 }
 
-/* Image container styling */
+
 div {
   display: flex;
   flex-direction: row;
-  /* display: flex; */
-  /* flex-wrap: wrap; */
-  /* justify-content: center; */
 }
 
-/* Image styling */
+
 img {
-  /* width: 100px;
-  height: 100px; */
   object-fit: cover;
   margin: 5px;
   border: 1px solid #ddd;

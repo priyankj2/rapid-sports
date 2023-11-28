@@ -16,11 +16,14 @@ export class VideoPlayerComponent implements OnInit {
   public displayControls = true;
   stopped:boolean=false;
   images: string[] = [];
+
   constructor() {}
+  
   ngOnInit(): void {
     // this.startVideo();
-    // this.startCamera();
+    this.startCamera();
   }
+  
   startCamera() {
     // this.startVideo();
     if(this.stopped){
@@ -38,6 +41,7 @@ export class VideoPlayerComponent implements OnInit {
     };
     CameraPreview.start(cameraPreviewOptions).then(() => {});
   }
+
   stopCam() {
     CameraPreview.stop().then(() => {
       this.started = false;
@@ -48,6 +52,7 @@ export class VideoPlayerComponent implements OnInit {
       this.stopped=true;
     });
   }
+
   async startVideo(){
     document.body.classList.remove('overlay');
     const delay = 5000;
@@ -75,9 +80,11 @@ export class VideoPlayerComponent implements OnInit {
     realtimeVideo.style.transform = 'scaleX(-1)';
     setTimeout(() => delayedVideo.play(), 5000);
   }
+  
   async getStream() {
     return navigator.mediaDevices.getUserMedia({ video: true });
   }
+
   captureImage() {
     const CameraPreviewPictureOptions: CameraPreviewPictureOptions = {
       quality: 100,
@@ -90,15 +97,18 @@ export class VideoPlayerComponent implements OnInit {
     });
     console.log(this.images);
   }
+
   flip() {
     CameraPreview.flip();
   }
+
   playVideo(){
     const video = <HTMLVideoElement>document.getElementById('video');
     if (video) {
       video.play();
     }
   }
+
   pauseVideo(){
     const video = <HTMLVideoElement>document.getElementById('video');
     if (video) {
@@ -106,7 +116,19 @@ export class VideoPlayerComponent implements OnInit {
     }
   }
 
-  storeFile() {
-    console.log( <HTMLVideoElement>document.getElementById('video'))
+  startRecording() {
+    const cameraPreviewOptions: CameraPreviewOptions = {
+      position: 'front',
+      width: window.screen.width,
+      height: window.screen.height,
+    };
+    
+    CameraPreview.startRecordVideo(cameraPreviewOptions);
+    console.log( 'startRecording', <HTMLVideoElement>document.getElementById('video'))
+  }
+
+  async stopRecording() {
+    const resultRecordVideo = await CameraPreview.stopRecordVideo();
+    console.log('stopRecording', resultRecordVideo)
   }
 }
