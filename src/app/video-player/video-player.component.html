@@ -1,4 +1,3 @@
-
 <!-- <app-delayed-video *ngIf="started==true"></app-delayed-video> -->
 <!--  *ngIf="started==true" -->
 <!-- <video class="mirror-video" video id="delayedVideo" autoplay playsinline #videoElement  width="100%" height="50%"></video>
@@ -7,21 +6,69 @@
 
 <canvas #canvasElement width="300" height="300" style="border:1px solid #000;"></canvas> -->
 
-    <div class="video-wrap">
-      <img src="assets/images/video-frame.jpg" alt="video frame" *ngIf="started==false"/>
-      <div [ngClass]="started?'camera-preview':''" #video id="cameraPreview"></div>
-<!-- <button *ngIf="started==true" (click)="playVideo()">play</button>
-<button *ngIf="started==true" (click)="pauseVideo()">pause</button> -->
-<button (click)="startCamera()" *ngIf="started==false" >Start</button>
-<button (click)="captureImage()" *ngIf="started==true">Capture</button>
-<button (click)="flip()" *ngIf="started==true">Flip</button>
-<button (click)="stopCam()" *ngIf="started==true">Stop</button>
-<button (click)="startRecording()" *ngIf="started==true">Start Recording</button>
-<button (click)="stopRecording()" *ngIf="started==true">Stop Recording</button>
-<div *ngFor="let image of images">
-    <img [src]="image">
-</div>
+<div class="video-wrap">
+  <div class="row">
+    <div >
+      <!-- <label for="videoType">Select Video Type: </label> -->
+      <select id="videoType" [(ngModel)]="selectedVideoType" (change)="switchVideoType()">
+        <option value="live">Live Feed</option>
+        <option value="delayed">5 Seconds Delayed Feed</option>
+      </select>
     </div>
+  </div>
+  <div>
+    <div class="relative">
+      <div [ngClass]="isLive?'opacity':''" class="text-center">
+        <!-- <span>Live Feed</span> -->
+        <!-- [controls]="displayControls" -->
+        <video [controls]="displayControls" class="mirror-video" video id="realtimeVideo" autoplay playsinline
+          #videoElement style="transform: scaleX(-1);" width="100%" height="50%"></video>
+        <div class="custom-controls">
+          <button (click)="playRealTimeVideo()">Play</button>
+          <button style="display: none;" (click)="pauseRealTimeVideo()">Pause</button>
+          <input type="range" id="videoSeeker" [value]="currentSeekTime" (input)="seekVideo($event)">
+        </div>
+        <!-- <jhi-canvas></jhi-canvas> -->
+      </div>
+      <div [ngClass]="!isLive?'opacity':''" class="text-center delayed-video">
+        <!-- <span>5 Seconds Delayed Feed</span> -->
+        <!-- [controls]="displayControls" -->
+        <video class="mirror-video" video id="delayedVideo" autoplay playsinline #videoElement width="100%"
+          height="50%"></video>
+        <div class="custom-controls">
+          <!-- <button (click)="start()">{{ isPlaying ? "Pause" : "Play" }}</button> *ngIf="videoState==='Played'"-->
+
+          <button (click)="startDelayedVideo()">play</button>
+          <button (click)="pauseDelayedVideo()">pause</button>
+          <input type="range" [value]="currentSeekTime" (input)="seekVideo($event)" min="0" max="100">
+          <div class="current-time">{{ calculateCurrentTime() }}</div>
+          <div class="row">
+            <div class="col-md-12 margined">
+              <select id="playbackSpeed" [(ngModel)]="selectedPlaybackSpeed"
+                (change)="setPlaybackSpeed(selectedPlaybackSpeed)">
+                <option *ngFor="let speedOption of playbackSpeedOptions" [value]="speedOption.value">{{
+                  speedOption.label }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <img src="assets/images/video-frame.jpg" alt="video frame" *ngIf="started==false" /> -->
+  <div [ngClass]="started?'camera-preview':''" #video id="cameraPreview"></div>
+  <!-- <button *ngIf="started==true" (click)="playVideo()">play</button>
+<button *ngIf="started==true" (click)="pauseVideo()">pause</button> -->
+  <!-- <button (click)="startCamera()" *ngIf="started==false">Start</button>
+  <button (click)="captureImage()" *ngIf="started==true">Capture</button>
+  <button (click)="flip()" *ngIf="started==true">Flip</button>
+  <button (click)="stopCam()" *ngIf="started==true">Stop</button>
+  <button (click)="startRecording()" *ngIf="started==true">Start Recording</button>
+  <button (click)="stopRecording()" *ngIf="started==true">Stop Recording</button>
+  <div *ngFor="let image of images">
+    <img [src]="image">
+  </div> -->
+</div>
 <div class="">
-  <img src="assets/images/moment-info.jpg" alt="moment"/>
+  <img src="assets/images/moment-info.jpg" alt="moment" />
 </div>

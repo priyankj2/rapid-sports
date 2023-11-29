@@ -1,11 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Plugins } from '@capacitor/core/';
-import {
-  CameraPreviewOptions,
-  CameraPreview,
-  CameraPreviewPictureOptions,
-} from '@capacitor-community/camera-preview';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { VideoService } from '../services/video.service';
+type RecordingState = 'NONE' | 'RECORDING' | 'RECORDED';
+type VideoState = 'Played' | 'Paused';
 @Component({
   selector: 'app-video-player',
   templateUrl: './video-player.component.html',
@@ -13,62 +9,97 @@ import { VideoService } from '../services/video.service';
 })
 export class VideoPlayerComponent implements OnInit {
   started: boolean = false;
-  selectedVideoType: string = 'delayed';
   public displayControls = true;
   stopped:boolean=false;
   images: string[] = [];
+  //
+  @ViewChild('videoElement')
+  videoElement: any;
+  selectedVideoType: string = 'delayed';
+  buttonValue: boolean = true;
+  isLive: boolean = true;
+  isPlaying = true;
+  recordingAdded = false;
+  video: any;
+  cameras: MediaDeviceInfo[] = [];
+  selectedCamera?: MediaDeviceInfo;
+  cameraListSupported = true;
+  state: RecordingState = 'NONE';
+  videoState: VideoState = 'Paused';
+  videoBlobUrl: any = null;
+  currentSeekTime = 0; // Initialize to 0
+  strideLength: any;
+  // Inside your component class
+  playbackSpeedOptions: { label: string; value: number }[] = [
+    { label: 'Normal Speed', value: 1 },
+    { label: 'Fast Forward', value: 2 },
+    { label: 'Slow Motion', value: 0.5 }
+  ];
+  selectedPlaybackSpeed: number = 1; // Default to normal speed
+  //
 
   constructor(
     private videoService: VideoService
   ) {}
   
   ngOnInit(): void {
-    // this.startVideo();
-    // this.startCamera();
+    this.startVideo();
+    this.start();
   }
-  
-  startCamera() {
-    // this.startVideo();
-    if(this.stopped){
-      this.images=[];
+
+  //
+
+  initCamera(config: any): void {
+    const browser = navigator as any;
+
+    browser.getUserMedia = browser.getUserMedia || browser.webkitGetUserMedia || browser.mozGetUserMedia || browser.msGetUserMedia;
+
+    browser.mediaDevices.getUserMedia(config).then((stream: MediaStream) => {
+      this.video.srcObject = stream;
+      this.video.play();
+    });
+  }
+
+  start(): void {
+    if (this.selectedCamera) {
+      this.initCamera({ video: { deviceId: this.selectedCamera.deviceId } });
+    } else {
+      this.initCamera({ video: true, audio: false });
     }
-    CameraPreview.start({ parent: 'cameraPreview' }).then(() => {
-      this.started = true;
-    });
-    const cameraPreviewOptions: CameraPreviewOptions = {
-      position: 'rear',
-      height: 200,
-      width: 300,
-      x:100,
-      y:50
-    };
-    CameraPreview.start(cameraPreviewOptions).then(() => {});
   }
 
-  stopCam() {
-    CameraPreview.stop().then(() => {
-      this.started = false;
-      for(let i=0 ; i<this.images.length ; i++){
-        localStorage.setItem('image',this.images[i])
-      }
-      // localStorage.setItem('image',this.images[0])
-      this.stopped=true;
-    });
+  stop(): void {
+    if (this.video && this.video.srcObject) {
+      const stream = this.video.srcObject;
+      this.video.pause();
+      this.video.src = '';
+      stream.getTracks()[0].stop();
+    }
   }
 
-  async startVideo(){
+  switchVideoType(): void {
+    if (this.selectedVideoType === 'live') {
+      this.isLive = false;
+    } else if (this.selectedVideoType === 'delayed') {
+      this.isLive = true;
+    }
+  }
+  async startVideo() {
     document.body.classList.remove('overlay');
     const delay = 5000;
     const mimeType = `video/webm; codecs="vp8"`;
     const stream = await this.getStream();
-    const realtimeVideo = document.querySelector('#video') as HTMLVideoElement;
+    const realtimeVideo = document.querySelector('#realtimeVideo') as HTMLVideoElement;
     realtimeVideo.srcObject = stream;
     const mediaSource = new MediaSource();
-    const delayedVideo = document.querySelector('#video') as HTMLVideoElement;
+    const delayedVideo = document.querySelector('#delayedVideo') as HTMLVideoElement;
     delayedVideo.src = URL.createObjectURL(mediaSource);
     await new Promise(res => mediaSource.addEventListener('sourceopen', res, { once: true }));
     const sourceBuffer = mediaSource.addSourceBuffer(mimeType);
+
+    // Use a type assertion to declare the type of MediaRecorder
     const recorder = new (window as any).MediaRecorder(stream, { mimeType });
+
     const chunks = [];
     recorder.ondataavailable = async (event: any) => {
       const { data } = event;
@@ -83,55 +114,73 @@ export class VideoPlayerComponent implements OnInit {
     realtimeVideo.style.transform = 'scaleX(-1)';
     setTimeout(() => delayedVideo.play(), 5000);
   }
-  
+
   async getStream() {
     return navigator.mediaDevices.getUserMedia({ video: true });
   }
-
-  captureImage() {
-    const CameraPreviewPictureOptions: CameraPreviewPictureOptions = {
-      quality: 100,
-      height: 100,
-      width: 100,
-    };
-    CameraPreview.capture(CameraPreviewPictureOptions).then((res) => {
-      const imageData = 'data:image/png;base64,' + res.value;
-      this.videoService.storeImage(imageData)
-      this.images.push(imageData);
-    });
-    console.log(this.images);
+  playRealTimeVideo() {
+    console.log('hello');
+    const realtimeVideo = document.querySelector('#realtimeVideo') as HTMLVideoElement;
+    realtimeVideo.play();
   }
-
-  flip() {
-    CameraPreview.flip();
-  }
-
-  playVideo(){
-    const video = <HTMLVideoElement>document.getElementById('video');
-    if (video) {
-      video.play();
+  togglePlayPause() {
+    // const video = this.videoElement.nativeElement;
+    const realtimeVideo = document.querySelector('#realtimeVideo') as HTMLVideoElement;
+    if (realtimeVideo.paused) {
+      realtimeVideo.play();
+      this.isPlaying = true;
+    } else {
+      realtimeVideo.pause();
+      this.isPlaying = false;
     }
   }
-
-  pauseVideo(){
-    const video = <HTMLVideoElement>document.getElementById('video');
-    if (video) {
-      video.pause();
+  pauseDelayedVideo() {
+    const delayedVideo = document.querySelector('#delayedVideo') as HTMLVideoElement;
+    delayedVideo.pause();
+  }
+  startDelayedVideo() {
+    const delayedVideo = document.querySelector('#delayedVideo') as HTMLVideoElement;
+    this.videoState = 'Played';
+    delayedVideo.play();
+  }
+  toggleDelayedVideoFullscreen() {
+    const delayedVideo = document.querySelector('#delayedVideo') as HTMLVideoElement;
+    delayedVideo.play();
+  }
+  switchVideos() {
+    this.isLive = !this.isLive;
+  }
+  pauseRealTimeVideo() {
+    // eslint-disable-next-line no-debugger
+    debugger;
+    console.log('hello');
+    const realtimeVideo = document.querySelector('#realtimeVideo') as HTMLVideoElement;
+    realtimeVideo.pause();
+    this.buttonValue = false;
+  }
+  seekVideo(event: any) {
+    const delayedVideo = document.querySelector('#delayedVideo') as HTMLVideoElement;
+    const newValue = parseFloat(event.target.value);
+    const newTime = (delayedVideo.duration * newValue) / 100;
+    delayedVideo.currentTime = newTime;
+    this.currentSeekTime = newValue; // Trigger change detection to update the UI
+  }
+  calculateCurrentTime(): string {
+    const delayedVideo = document.querySelector('#delayedVideo') as HTMLVideoElement;
+    if (delayedVideo) {
+      const currentTime = (delayedVideo.currentTime / delayedVideo.duration) * 100;
+      return `${Math.round(currentTime)}%`;
     }
+    return '0%';
   }
+  setPlaybackSpeed(speed: number): void {
+    const realtimeVideo = document.querySelector('#realtimeVideo') as HTMLVideoElement;
+    const delayedVideo = document.querySelector('#delayedVideo') as HTMLVideoElement;
 
-  startRecording() {
-    const cameraPreviewOptions: CameraPreviewOptions = {
-      position: 'front',
-      width: window.screen.width,
-      height: window.screen.height,
-      storeToFile: true
-    };
-    
-    CameraPreview.startRecordVideo(cameraPreviewOptions);
+    // Set the playback speed for both videos
+    // realtimeVideo.playbackRate = speed;
+    delayedVideo.playbackRate = speed;
+    this.selectedPlaybackSpeed = speed;
   }
-
-  async stopRecording() {
-    const resultRecordVideo = await CameraPreview.stopRecordVideo();
-  }
+  //
 }
