@@ -5,11 +5,11 @@ import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { ICareProvider } from 'app/shared/model/care-provider.model';
 
-import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { CareProviderService } from './care-provider.service';
 import { CareProviderDeleteDialogComponent } from './care-provider-delete-dialog.component';
+import { ITEMS_PER_PAGE } from '../../shared/constants/pagination.constants';
+import { ICareProvider } from '../../shared/model/care-provider.model';
 
 @Component({
   selector: 'jhi-care-provider',

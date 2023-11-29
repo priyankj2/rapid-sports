@@ -4,13 +4,14 @@ import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router
 import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
-import { Authority } from 'app/shared/constants/authority.constants';
-import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
-import { ITestResult, TestResult } from 'app/shared/model/test-result.model';
+
 import { TestResultService } from './test-result.service';
 import { TestResultComponent } from './test-result.component';
 import { TestResultDetailComponent } from './test-result-detail.component';
 import { TestResultUpdateComponent } from './test-result-update.component';
+import { UserRouteAccessService } from '../../core/auth/user-route-access-service';
+import { Authority } from '../../shared/constants/authority.constants';
+import { ITestResult, TestResult } from '../../shared/model/test-result.model';
 
 @Injectable({ providedIn: 'root' })
 export class TestResultResolve implements Resolve<ITestResult> {

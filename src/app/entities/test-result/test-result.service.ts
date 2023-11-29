@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { SERVER_API_URL } from '../../app.constants';
+import { ITestResult } from '../../shared/model/test-result.model';
+import { createRequestOption } from '../../shared/util/request-util';
 
-import { SERVER_API_URL } from 'app/app.constants';
-import { createRequestOption } from 'app/shared/util/request-util';
-import { ITestResult } from 'app/shared/model/test-result.model';
+
 
 type EntityResponseType = HttpResponse<ITestResult>;
 type EntityArrayResponseType = HttpResponse<ITestResult[]>;

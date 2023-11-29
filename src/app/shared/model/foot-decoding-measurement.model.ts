@@ -1,4 +1,4 @@
-import { IFootDecodingMeasurementRaw } from 'app/shared/model/foot-decoding-measurement-raw.model';
+import { IFootDecodingMeasurementRaw } from "./foot-decoding-measurement-raw.model";
 
 export interface IFootDecodingMeasurement {
   id?: number;

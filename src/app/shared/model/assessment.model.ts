@@ -1,14 +1,15 @@
 import { Moment } from 'moment';
-import { IImageData } from 'app/shared/model/image-data.model';
-import { IExerciseOrModality } from 'app/shared/model/exercise-or-modality.model';
-import { IAreaOfConcentration } from 'app/shared/model/area-of-concentration.model';
-import { ICareProvider } from 'app/shared/model/care-provider.model';
-import { IObservation } from 'app/shared/model/observation.model';
-import { IFootDecodingMeasurement } from 'app/shared/model/foot-decoding-measurement.model';
-import { IFootType } from 'app/shared/model/foot-type.model';
-import { ICondition } from 'app/shared/model/condition.model';
-import { IAppointment } from 'app/shared/model/appointment.model';
-import { IPatient } from 'app/shared/model/patient.model';
+import { IImageData } from './image-data.model';
+import { IAppointment } from './appointment.model';
+import { IAreaOfConcentration } from './area-of-concentration.model';
+import { ICareProvider } from './care-provider.model';
+import { ICondition } from './condition.model';
+import { IExerciseOrModality } from './exercise-or-modality.model';
+import { IFootDecodingMeasurement } from './foot-decoding-measurement.model';
+import { IFootType } from './foot-type.model';
+import { IObservation } from './observation.model';
+import { IPatient } from './patient.model';
+
 
 export interface IAssessment {
   id?: number;

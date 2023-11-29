@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { IAppointment } from 'app/shared/model/appointment.model';
 import { AppointmentService } from './appointment.service';
+import { IAppointment } from '../../shared/model/appointment.model';
 
 @Component({
   templateUrl: './appointment-delete-dialog.component.html'

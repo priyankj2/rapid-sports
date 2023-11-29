@@ -1,11 +1,12 @@
 import { Moment } from 'moment';
-import { IUser } from 'app/core/user/user.model';
-import { IAssessment } from 'app/shared/model/assessment.model';
-import { IPatientNote } from 'app/shared/model/patient-note.model';
-import { IAppointment } from 'app/shared/model/appointment.model';
-import { ICondition } from 'app/shared/model/condition.model';
-import { IClinic } from 'app/shared/model/clinic.model';
-import { Gender } from 'app/shared/model/enumerations/gender.model';
+import { IUser } from '../../core/user/user.model';
+import { IAppointment } from './appointment.model';
+import { IAssessment } from './assessment.model';
+import { IClinic } from './clinic.model';
+import { ICondition } from './condition.model';
+import { Gender } from './enumerations/gender.model';
+import { IPatientNote } from './patient-note.model';
+
 
 export interface IPatient {
   id?: number;

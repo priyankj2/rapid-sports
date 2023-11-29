@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IPatientNote } from 'app/shared/model/patient-note.model';
+import { IPatientNote } from '../../model/patient-note.model';
 
 @Component({
   selector: 'jhi-patient-note-edit-form',

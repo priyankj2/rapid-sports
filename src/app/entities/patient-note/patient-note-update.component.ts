@@ -4,15 +4,15 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
-
-import { IPatientNote, PatientNote } from 'app/shared/model/patient-note.model';
+import moment from 'moment';
+import { IUser } from '../../core/user/user.model';
+import { UserService } from '../../core/user/user.service';
+import { DATE_TIME_FORMAT } from '../../shared/constants/input.constants';
+import { IPatientNote, PatientNote } from '../../shared/model/patient-note.model';
+import { IPatient } from '../../shared/model/patient.model';
+import { PatientService } from '../patient/patient.service';
 import { PatientNoteService } from './patient-note.service';
-import { IPatient } from 'app/shared/model/patient.model';
-import { PatientService } from 'app/entities/patient/patient.service';
-import { IUser } from 'app/core/user/user.model';
-import { UserService } from 'app/core/user/user.service';
+
 
 type SelectableEntity = IPatient | IUser;
 
@@ -58,11 +58,11 @@ export class PatientNoteUpdateComponent implements OnInit {
 
   updateForm(patientNote: IPatientNote): void {
     this.editForm.patchValue({
-      id: patientNote.id,
-      dateCreated: patientNote.dateCreated ? patientNote.dateCreated.format(DATE_TIME_FORMAT) : null,
-      noteText: patientNote.noteText,
-      patient: patientNote.patient,
-      createdBy: patientNote.createdBy
+      // id: patientNote.id,
+      // dateCreated: patientNote.dateCreated ? patientNote.dateCreated.format(DATE_TIME_FORMAT) : null,
+      // noteText: patientNote.noteText,
+      // patient: patientNote.patient,
+      // createdBy: patientNote.createdBy
     });
   }
 

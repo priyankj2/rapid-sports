@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EventClickEvent, SchedulerEvent } from '@progress/kendo-angular-scheduler';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AppointmentService } from 'app/entities/appointment/appointment.service';
+import { AppointmentService } from '../../entities/appointment/appointment.service';
 
 @Component({
   selector: 'jhi-schedule',

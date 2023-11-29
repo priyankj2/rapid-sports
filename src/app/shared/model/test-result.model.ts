@@ -1,6 +1,6 @@
-import { IAreaOfConcentration } from 'app/shared/model/area-of-concentration.model';
-import { IFootType } from 'app/shared/model/foot-type.model';
-import { ICondition } from 'app/shared/model/condition.model';
+import { IAreaOfConcentration } from "./area-of-concentration.model";
+import { ICondition } from "./condition.model";
+import { IFootType } from "./foot-type.model";
 
 export interface ITestResult {
   id?: number;

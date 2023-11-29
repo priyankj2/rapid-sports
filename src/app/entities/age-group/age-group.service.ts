@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { SERVER_API_URL } from 'app/app.constants';
-import { createRequestOption } from 'app/shared/util/request-util';
-import { IAgeGroup } from 'app/shared/model/age-group.model';
+import { IAgeGroup } from '../../shared/model/age-group.model';
+import { createRequestOption } from '../../shared/util/request-util';
+import { SERVER_API_URL } from '../../app.constants';
 
 type EntityResponseType = HttpResponse<IAgeGroup>;
 type EntityArrayResponseType = HttpResponse<IAgeGroup[]>;

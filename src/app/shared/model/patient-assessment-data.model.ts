@@ -1,5 +1,6 @@
-import { IAssessment } from 'app/shared/model/assessment.model';
-import { IAreaOfConcentration } from 'app/shared/model/area-of-concentration.model';
+import { IAreaOfConcentration } from "./area-of-concentration.model";
+import { IAssessment } from "./assessment.model";
+
 
 export interface IPatientAssessmentData {
   baseline?: IAssessment;

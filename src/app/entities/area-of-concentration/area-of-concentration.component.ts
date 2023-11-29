@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IAreaOfConcentration } from 'app/shared/model/area-of-concentration.model';
 import { AreaOfConcentrationService } from './area-of-concentration.service';
 import { AreaOfConcentrationDeleteDialogComponent } from './area-of-concentration-delete-dialog.component';
+import { IAreaOfConcentration } from '../../shared/model/area-of-concentration.model';
 
 @Component({
   selector: 'jhi-area-of-concentration',

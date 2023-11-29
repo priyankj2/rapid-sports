@@ -1,6 +1,7 @@
-import { ILocation } from 'app/shared/model/location.model';
-import { ISupportingVideo } from 'app/shared/model/supporting-video.model';
+
 import { Moment } from 'moment';
+import { ILocation } from './location.model';
+import { ISupportingVideo } from './supporting-video.model';
 
 export interface IClinic {
   id?: number;

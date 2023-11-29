@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { IAssessment } from 'app/shared/model/assessment.model';
+import { IAssessment } from '../../shared/model/assessment.model';
 import { AssessmentService } from './assessment.service';
 
 @Component({

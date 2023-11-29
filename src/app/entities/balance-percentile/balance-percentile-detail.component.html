@@ -5,16 +5,16 @@
 
             <hr>
 
-            <jhi-alert-error></jhi-alert-error>
+            <!-- <jhi-alert-error></jhi-alert-error> -->
 
             <dl class="row-md jh-entity-details">
                 <dt><span jhiTranslate="rapidApp.balancePercentile.gender">Gender</span></dt>
                 <dd>
-                    <span jhiTranslate="{{ 'rapidApp.Gender.' + balancePercentile.gender }}">{{ balancePercentile.gender }}</span>
+                    <!-- <span jhiTranslate="{{ 'rapidApp.Gender.' + balancePercentile.gender }}">{{ balancePercentile.gender }}</span> -->
                 </dd>
                 <dt><span jhiTranslate="rapidApp.balancePercentile.testCode">Test Code</span></dt>
                 <dd>
-                    <span jhiTranslate="{{ 'rapidApp.TestCode.' + balancePercentile.testCode }}">{{ balancePercentile.testCode }}</span>
+                    <!-- <span jhiTranslate="{{ 'rapidApp.TestCode.' + balancePercentile.testCode }}">{{ balancePercentile.testCode }}</span> -->
                 </dd>
                 <dt><span jhiTranslate="rapidApp.balancePercentile.minimumLength">Minimum Length</span></dt>
                 <dd>
@@ -27,7 +27,7 @@
                 <dt><span jhiTranslate="rapidApp.balancePercentile.ageGroup">Age Group</span></dt>
                 <dd>
                     <div *ngIf="balancePercentile.ageGroup">
-                        <a [routerLink]="['/age-group', balancePercentile.ageGroup?.id, 'view']">{{ balancePercentile.ageGroup?.id }}</a>
+                        <!-- <a [routerLink]="['/age-group', balancePercentile.ageGroup?.id, 'view']">{{ balancePercentile.ageGroup?.id }}</a> -->
                     </div>
                 </dd>
             </dl>
@@ -35,14 +35,14 @@
             <button type="submit"
                     (click)="previousState()"
                     class="btn btn-info">
-                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+                <!-- <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span> -->
             </button>
 
-            <button type="button"
+            <!-- <button type="button"
                     [routerLink]="['/balance-percentile', balancePercentile.id, 'edit']"
                     class="btn btn-primary">
                 <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-            </button>
+            </button> -->
         </div>
     </div>
 </div>

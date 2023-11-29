@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IPatientNote } from '../../shared/model/patient-note.model';
 
-import { IPatientNote } from 'app/shared/model/patient-note.model';
 
 @Component({
   selector: 'jhi-patient-note-detail',

@@ -4,13 +4,13 @@ import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router
 import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
-import { Authority } from 'app/shared/constants/authority.constants';
-import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
-import { IAreaOfConcentration, AreaOfConcentration } from 'app/shared/model/area-of-concentration.model';
 import { AreaOfConcentrationService } from './area-of-concentration.service';
 import { AreaOfConcentrationComponent } from './area-of-concentration.component';
 import { AreaOfConcentrationDetailComponent } from './area-of-concentration-detail.component';
 import { AreaOfConcentrationUpdateComponent } from './area-of-concentration-update.component';
+import { Authority } from '../../shared/constants/authority.constants';
+import { UserRouteAccessService } from '../../core/auth/user-route-access-service';
+import { IAreaOfConcentration, AreaOfConcentration } from '../../shared/model/area-of-concentration.model';
 
 @Injectable({ providedIn: 'root' })
 export class AreaOfConcentrationResolve implements Resolve<IAreaOfConcentration> {

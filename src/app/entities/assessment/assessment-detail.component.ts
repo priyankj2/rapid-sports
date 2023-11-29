@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IAssessment } from '../../shared/model/assessment.model';
 
-import { IAssessment } from 'app/shared/model/assessment.model';
 
 @Component({
   selector: 'jhi-assessment-detail',

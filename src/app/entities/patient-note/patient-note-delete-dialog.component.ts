@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { IPatientNote } from 'app/shared/model/patient-note.model';
 import { PatientNoteService } from './patient-note.service';
+import { IPatientNote } from '../../shared/model/patient-note.model';
 
 @Component({
   templateUrl: './patient-note-delete-dialog.component.html'

@@ -5,11 +5,11 @@ import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IBalancePercentile } from 'app/shared/model/balance-percentile.model';
 
-import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { BalancePercentileService } from './balance-percentile.service';
 import { BalancePercentileDeleteDialogComponent } from './balance-percentile-delete-dialog.component';
+import { ITEMS_PER_PAGE } from '../../shared/constants/pagination.constants';
+import { IBalancePercentile } from '../../shared/model/balance-percentile.model';
 
 @Component({
   selector: 'jhi-balance-percentile',
@@ -50,10 +50,10 @@ export class BalancePercentileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(data => {
-      this.page = data.pagingParams.page;
-      this.ascending = data.pagingParams.ascending;
-      this.predicate = data.pagingParams.predicate;
-      this.ngbPaginationPage = data.pagingParams.page;
+      this.page = data['pagingParams'].page;
+      this.ascending = data['pagingParams'].ascending;
+      this.predicate = data['pagingParams'].predicate;
+      this.ngbPaginationPage = data['pagingParams'].page;
       this.loadPage();
     });
     this.registerChangeInBalancePercentiles();

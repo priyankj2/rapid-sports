@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { ITestResult } from 'app/shared/model/test-result.model';
 import { TestResultService } from './test-result.service';
 import { TestResultDeleteDialogComponent } from './test-result-delete-dialog.component';
+import { ITestResult } from '../../shared/model/test-result.model';
 
 @Component({
   selector: 'jhi-test-result',

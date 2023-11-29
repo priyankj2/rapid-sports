@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ITestResult } from '../../shared/model/test-result.model';
 
-import { ITestResult } from 'app/shared/model/test-result.model';
 
 @Component({
   selector: 'jhi-test-result-detail',

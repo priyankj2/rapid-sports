@@ -4,15 +4,14 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
-import { IAppointment, Appointment } from 'app/shared/model/appointment.model';
 import { AppointmentService } from './appointment.service';
-import { ILocation } from 'app/shared/model/location.model';
-import { LocationService } from 'app/entities/location/location.service';
-import { IPatient } from 'app/shared/model/patient.model';
-import { PatientService } from 'app/entities/patient/patient.service';
+import { ILocation } from '../../shared/model/location.model';
+import { PatientService } from '../patient/patient.service';
+import { IPatient } from '../../shared/model/patient.model';
+import { LocationService } from '../location/location.service';
+import { Appointment, IAppointment } from '../../shared/model/appointment.model';
+import { DATE_TIME_FORMAT } from '../../shared/constants/input.constants';
 
 type SelectableEntity = ILocation | IPatient;
 
@@ -112,3 +111,7 @@ export class AppointmentUpdateComponent implements OnInit {
     return item.id;
   }
 }
+function moment() {
+  throw new Error('Function not implemented.');
+}
+

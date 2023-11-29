@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IAssessment } from 'app/shared/model/assessment.model';
 import { AssessmentService } from './assessment.service';
 import { AssessmentDeleteDialogComponent } from './assessment-delete-dialog.component';
+import { IAssessment } from '../../shared/model/assessment.model';
 
 @Component({
   selector: 'jhi-assessment',

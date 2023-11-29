@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ICareProvider } from '../../shared/model/care-provider.model';
 
-import { ICareProvider } from 'app/shared/model/care-provider.model';
 
 @Component({
   selector: 'jhi-care-provider-detail',

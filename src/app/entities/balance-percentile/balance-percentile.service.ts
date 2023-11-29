@@ -1,15 +1,16 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
+import { SERVER_API_URL } from '../../app.constants';
+import { IAgeGroup } from '../../shared/model/age-group.model';
+import { IBalancePercentile, BalancePercentile } from '../../shared/model/balance-percentile.model';
+import { Gender } from '../../shared/model/enumerations/gender.model';
+import { TestCode } from '../../shared/model/enumerations/test-code.model';
+import { IObservation } from '../../shared/model/observation.model';
+import { createRequestOption } from '../../shared/util/request-util';
+import { AgeGroupService } from '../age-group/age-group.service';
 
-import { SERVER_API_URL } from 'app/app.constants';
-import { createRequestOption } from 'app/shared/util/request-util';
-import { BalancePercentile, IBalancePercentile } from 'app/shared/model/balance-percentile.model';
-import { IObservation } from 'app/shared/model/observation.model';
-import { AgeGroupService } from 'app/entities/age-group/age-group.service';
-import { IAgeGroup } from 'app/shared/model/age-group.model';
-import { Gender } from 'app/shared/model/enumerations/gender.model';
-import { TestCode } from 'app/shared/model/enumerations/test-code.model';
+
 
 type EntityResponseType = HttpResponse<IBalancePercentile>;
 type EntityArrayResponseType = HttpResponse<IBalancePercentile[]>;

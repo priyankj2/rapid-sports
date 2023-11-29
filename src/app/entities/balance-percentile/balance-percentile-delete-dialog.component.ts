@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { IBalancePercentile } from 'app/shared/model/balance-percentile.model';
 import { BalancePercentileService } from './balance-percentile.service';
+import { IBalancePercentile } from '../../shared/model/balance-percentile.model';
 
 @Component({
   templateUrl: './balance-percentile-delete-dialog.component.html'

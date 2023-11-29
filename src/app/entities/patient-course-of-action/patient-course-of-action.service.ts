@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as moment from 'moment';
+import moment from 'moment';
+import { SERVER_API_URL } from '../../app.constants';
+import { IPatientCourseOfAction } from '../../shared/model/patient-course-of-action.model';
+import { createRequestOption } from '../../shared/util/request-util';
 
-import { SERVER_API_URL } from 'app/app.constants';
-import { createRequestOption } from 'app/shared/util/request-util';
-import { IPatientCourseOfAction } from 'app/shared/model/patient-course-of-action.model';
+
 
 type EntityResponseType = HttpResponse<IPatientCourseOfAction>;
 type EntityArrayResponseType = HttpResponse<IPatientCourseOfAction[]>;

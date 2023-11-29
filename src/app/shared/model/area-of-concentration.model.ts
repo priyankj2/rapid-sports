@@ -1,5 +1,5 @@
-import { ITestResult } from 'app/shared/model/test-result.model';
-import { IAssessment } from 'app/shared/model/assessment.model';
+import { IAssessment } from './assessment.model';
+import { ITestResult } from './test-result.model';
 
 export interface IAreaOfConcentration {
   id?: number;

@@ -11,7 +11,7 @@
             <div class="col-8">
                 <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
                     <div>
-                        <jhi-alert-error></jhi-alert-error>
+                        <!-- <jhi-alert-error></jhi-alert-error> -->
 
                         <div class="form-group" [hidden]="!editForm.get('id')!.value">
                             <label for="id" jhiTranslate="global.field.id">ID</label>
@@ -21,7 +21,7 @@
                         <div class="form-group">
                             <label class="form-control-label" jhiTranslate="rapidApp.appointment.startTime" for="field_startTime">Start Time</label>
                             <div class="d-flex">
-                                <kendo-datetimepicker
+                                <!-- <kendo-datetimepicker
                                     id="field_startTime"
                                     class="form-control"
                                     [value]="now"
@@ -30,7 +30,7 @@
                                     placeholder="MM/DD/YYYY hh:mm"
                                     (valueChange)="onStartTimeChanged($event)"
                                 >
-                                </kendo-datetimepicker>
+                                </kendo-datetimepicker> -->
                             </div>
                             <div *ngIf="editForm.get('startTime')!.invalid && (editForm.get('startTime')!.dirty || editForm.get('startTime')!.touched)">
                                 <small class="form-text text-danger"
@@ -38,7 +38,7 @@
                                     This field is required.
                                 </small>
                                 <small class="form-text text-danger"
-                                       [hidden]="!editForm.get('startTime')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                                       [hidden]="!editForm.get('startTime')?.errors?.['ZonedDateTimelocal']" jhiTranslate="entity.validation.ZonedDateTimelocal">
                                     This field should be a date and time.
                                 </small>
                             </div>
@@ -47,7 +47,7 @@
                         <div class="form-group">
                             <label class="form-control-label" jhiTranslate="rapidApp.appointment.endTime" for="field_endTime">End Time</label>
                             <div class="d-flex">
-                                <kendo-datetimepicker
+                                <!-- <kendo-datetimepicker
                                     id="field_endTime"
                                     class="form-control"
                                     [value]="now"
@@ -55,7 +55,7 @@
                                     formControlName="endTime"
                                     placeholder="MM/DD/YYYY hh:mm"
                                 >
-                                </kendo-datetimepicker>
+                                </kendo-datetimepicker> -->
                             </div>
                             <div *ngIf="editForm.get('endTime')!.invalid && (editForm.get('endTime')!.dirty || editForm.get('endTime')!.touched)">
                                 <small class="form-text text-danger"
@@ -63,7 +63,7 @@
                                     This field is required.
                                 </small>
                                 <small class="form-text text-danger"
-                                       [hidden]="!editForm.get('endTime')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                                       [hidden]="!editForm.get('endTime')?.errors?.['ZonedDateTimelocal']" jhiTranslate="entity.validation.ZonedDateTimelocal">
                                     This field should be a date and time.
                                 </small>
                             </div>
@@ -72,12 +72,12 @@
 
                     <div>
                         <button type="button" id="cancel-save" class="btn btn-secondary" (click)="cancel()">
-                            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                            <!-- <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span> -->
                         </button>
 
                         <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
                                 class="btn btn-primary">
-                            <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                            <!-- <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span> -->
                         </button>
                     </div>
                 </form>

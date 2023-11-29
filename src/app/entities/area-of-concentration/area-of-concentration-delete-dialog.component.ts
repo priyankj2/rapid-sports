@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { IAreaOfConcentration } from 'app/shared/model/area-of-concentration.model';
 import { AreaOfConcentrationService } from './area-of-concentration.service';
+import { IAreaOfConcentration } from '../../shared/model/area-of-concentration.model';
 
 @Component({
   templateUrl: './area-of-concentration-delete-dialog.component.html'

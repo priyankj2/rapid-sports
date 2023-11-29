@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { ISupportingVideo } from 'app/shared/model/supporting-video.model';
 import { SupportingVideoService } from './supporting-video.service';
+import { ISupportingVideo } from '../../shared/model/supporting-video.model';
 
 @Component({
   templateUrl: './supporting-video-delete-dialog.component.html'

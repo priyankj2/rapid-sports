@@ -4,13 +4,13 @@ import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router
 import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
-import { Authority } from 'app/shared/constants/authority.constants';
-import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
-import { IAssessment, Assessment } from 'app/shared/model/assessment.model';
 import { AssessmentService } from './assessment.service';
 import { AssessmentComponent } from './assessment.component';
 import { AssessmentDetailComponent } from './assessment-detail.component';
 import { AssessmentUpdateComponent } from './assessment-update.component';
+import { UserRouteAccessService } from '../../core/auth/user-route-access-service';
+import { Authority } from '../../shared/constants/authority.constants';
+import { IAssessment, Assessment } from '../../shared/model/assessment.model';
 
 @Injectable({ providedIn: 'root' })
 export class AssessmentResolve implements Resolve<IAssessment> {

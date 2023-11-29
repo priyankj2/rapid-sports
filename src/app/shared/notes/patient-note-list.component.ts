@@ -1,8 +1,8 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { IPatient } from 'app/shared/model/patient.model';
-import { PatientNoteService } from 'app/entities/patient-note/patient-note.service';
 import { Subscription } from 'rxjs';
-import { IPatientNote, PatientNote } from 'app/shared/model/patient-note.model';
+import { PatientNoteService } from '../../entities/patient-note/patient-note.service';
+import { IPatientNote, PatientNote } from '../model/patient-note.model';
+import { IPatient } from '../model/patient.model';
 
 @Component({
   selector: 'jhi-patient-note-list',

@@ -4,13 +4,14 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-
-import { ITestResult, TestResult } from 'app/shared/model/test-result.model';
+import { ICondition } from '../../shared/model/condition.model';
+import { IFootType } from '../../shared/model/foot-type.model';
+import { ITestResult, TestResult } from '../../shared/model/test-result.model';
+import { ConditionService } from '../condition/condition.service';
+import { FootTypeService } from '../foot-type/foot-type.service';
 import { TestResultService } from './test-result.service';
-import { IFootType } from 'app/shared/model/foot-type.model';
-import { FootTypeService } from 'app/entities/foot-type/foot-type.service';
-import { ICondition } from 'app/shared/model/condition.model';
-import { ConditionService } from 'app/entities/condition/condition.service';
+
+
 
 type SelectableEntity = IFootType | ICondition;
 

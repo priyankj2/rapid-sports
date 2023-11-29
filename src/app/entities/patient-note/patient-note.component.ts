@@ -4,9 +4,10 @@ import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IPatientNote } from 'app/shared/model/patient-note.model';
+
 import { PatientNoteService } from './patient-note.service';
 import { PatientNoteDeleteDialogComponent } from './patient-note-delete-dialog.component';
+import { IPatientNote } from '../../shared/model/patient-note.model';
 
 @Component({
   selector: 'jhi-patient-note',

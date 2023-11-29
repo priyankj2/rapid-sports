@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IAppointment } from 'app/shared/model/appointment.model';
 import { AppointmentService } from './appointment.service';
 import { AppointmentDeleteDialogComponent } from './appointment-delete-dialog.component';
+import { IAppointment } from '../../shared/model/appointment.model';
 
 @Component({
   selector: 'jhi-appointment',

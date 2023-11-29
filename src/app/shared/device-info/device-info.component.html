@@ -1,14 +1,14 @@
 <div class="card">
     <label>
-        Device IP Address: <input class="form-control" type="text" [(ngModel)]="deviceIP">
+        <!-- Device IP Address: <input class="form-control" type="text" [(ngModel)]="deviceIP"> -->
     </label>
     <button class="btn btn-primary" (click)="loadDeviceInfo()">LOAD</button>
     <div class="alert alert-info" *ngIf="device">
-        <p>ID: {{ device.id }}</p>
+        <!-- <p>ID: {{ device.id }}</p>
         <p>Name: {{ device.name }}</p>
         <p>Address: {{ device.address }}</p>
         <p>Model: {{ device.model }}</p>
-        <p>Class: {{ device.className }}</p>
+        <p>Class: {{ device.className }}</p> -->
     </div>
     <button *ngIf="device" class="btn btn-secondary" (click)="onForgetDevice()">FORGET</button>
     <div class="alert alert-danger" *ngIf="errorMessage">

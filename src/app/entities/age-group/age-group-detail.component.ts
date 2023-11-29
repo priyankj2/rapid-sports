@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IAgeGroup } from '../../shared/model/age-group.model';
 
-import { IAgeGroup } from 'app/shared/model/age-group.model';
 
 @Component({
   selector: 'jhi-age-group-detail',

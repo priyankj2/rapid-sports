@@ -1,6 +1,7 @@
-import { IUser } from 'app/core/user/user.model';
-import { ILocation } from 'app/shared/model/location.model';
-import { IClinic } from 'app/shared/model/clinic.model';
+import { IUser } from "../../core/user/user.model";
+import { IClinic } from "./clinic.model";
+import { ILocation } from "./location.model";
+
 
 export interface ICareProvider {
   id?: number;

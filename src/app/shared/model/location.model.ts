@@ -1,7 +1,8 @@
-import { IStateOrProvince } from 'app/shared/model/state-or-province.model';
-import { ICountry } from 'app/shared/model/country.model';
-import { ICareProvider } from 'app/shared/model/care-provider.model';
-import { IClinic } from 'app/shared/model/clinic.model';
+import { ICareProvider } from "./care-provider.model";
+import { IClinic } from "./clinic.model";
+import { ICountry } from "./country.model";
+import { IStateOrProvince } from "./state-or-province.model";
+
 
 export interface ILocation {
   id?: number;

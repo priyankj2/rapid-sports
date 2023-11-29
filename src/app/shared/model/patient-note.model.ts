@@ -1,6 +1,7 @@
 import { Moment } from 'moment';
-import { IPatient } from 'app/shared/model/patient.model';
-import { IUser } from 'app/core/user/user.model';
+import { IUser } from '../../core/user/user.model';
+import { IPatient } from './patient.model';
+
 
 export interface IPatientNote {
   id?: number;

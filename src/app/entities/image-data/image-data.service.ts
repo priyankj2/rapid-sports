@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { SERVER_API_URL } from 'app\app.constants.ts';
-import { createRequestOption } from 'app/shared/util/request-util';
-import { IImageData, ImageData } from 'app/shared/model/image-data.model';
+// import { SERVER_API_URL } from '';
+// import { IImageData, ImageData } from 'app/shared/model/image-data.model';
 import { JhiDataUtils } from 'ng-jhipster';
+import { SERVER_API_URL } from '../../app.constants';
+import { IImageData } from '../../shared/model/image-data.model';
+import { createRequestOption } from '../../shared/util/request-util';
 
 type EntityResponseType = HttpResponse<IImageData>;
 type EntityArrayResponseType = HttpResponse<IImageData[]>;

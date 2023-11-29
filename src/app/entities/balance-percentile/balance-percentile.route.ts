@@ -5,13 +5,14 @@ import { JhiResolvePagingParams } from 'ng-jhipster';
 import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
-import { Authority } from 'app/shared/constants/authority.constants';
-import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
-import { IBalancePercentile, BalancePercentile } from 'app/shared/model/balance-percentile.model';
+
 import { BalancePercentileService } from './balance-percentile.service';
 import { BalancePercentileComponent } from './balance-percentile.component';
 import { BalancePercentileDetailComponent } from './balance-percentile-detail.component';
 import { BalancePercentileUpdateComponent } from './balance-percentile-update.component';
+import { UserRouteAccessService } from '../../core/auth/user-route-access-service';
+import { Authority } from '../../shared/constants/authority.constants';
+import { IBalancePercentile, BalancePercentile } from '../../shared/model/balance-percentile.model';
 
 @Injectable({ providedIn: 'root' })
 export class BalancePercentileResolve implements Resolve<IBalancePercentile> {

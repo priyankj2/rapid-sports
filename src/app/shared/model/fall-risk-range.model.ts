@@ -1,5 +1,5 @@
-import { IAgeGroup } from 'app/shared/model/age-group.model';
-import { Gender } from 'app/shared/model/enumerations/gender.model';
+import { IAgeGroup } from "./age-group.model";
+import { Gender } from "./enumerations/gender.model";
 
 export interface IFallRiskRange {
   id?: number;

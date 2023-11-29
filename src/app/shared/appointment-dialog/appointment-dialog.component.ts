@@ -1,16 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IPatient } from 'app/shared/model/patient.model';
-import { AppointmentService } from 'app/entities/appointment/appointment.service';
-import { LocationService } from 'app/entities/location/location.service';
-import { PatientService } from 'app/entities/patient/patient.service';
+
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Appointment, IAppointment } from 'app/shared/model/appointment.model';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
-import * as moment from 'moment';
+
+import moment from 'moment';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { AppointmentService } from '../../entities/appointment/appointment.service';
+import { LocationService } from '../../entities/location/location.service';
+import { PatientService } from '../../entities/patient/patient.service';
+import { DATE_TIME_FORMAT } from '../constants/input.constants';
+import { IAppointment, Appointment } from '../model/appointment.model';
+import { IPatient } from '../model/patient.model';
 
 @Component({
   selector: 'jhi-appointment-dialog',
@@ -38,7 +40,7 @@ export class AppointmentDialogComponent implements OnInit {
     protected patientService: PatientService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
-    private activeModal: NgbActiveModal
+    // private activeModal: NgbActiveModal
   ) {}
 
   ngOnInit(): void {
@@ -62,20 +64,20 @@ export class AppointmentDialogComponent implements OnInit {
   }
 
   cancel(): void {
-    this.activeModal.close();
+    // this.activeModal.close();
   }
 
   updateForm(appointment: IAppointment): void {
     this.editForm.patchValue({
-      id: appointment.id,
+      // id: appointment.id,
       startTime: appointment.startTime ? appointment.startTime.toDate() : this.now,
       endTime: appointment.endTime
         ? appointment.endTime.toDate()
         : moment()
             .add(30, 'minutes')
             .toDate(),
-      location: appointment.location,
-      patient: appointment.patient
+      // location: appointment.location,
+      // patient: appointment.patient
     });
   }
 
@@ -99,7 +101,7 @@ export class AppointmentDialogComponent implements OnInit {
 
   protected onSaveSuccess(): void {
     this.isSaving = false;
-    this.activeModal.close(this.appointment);
+    // this.activeModal.close(this.appointment);
   }
 
   protected onSaveError(): void {

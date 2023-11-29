@@ -1,6 +1,7 @@
-import { ISupportingVideo } from 'app/shared/model/supporting-video.model';
-import { IAssessment } from 'app/shared/model/assessment.model';
-import { ICourseOfActionMapping } from 'app/shared/model/course-of-action-mapping.model';
+import { IAssessment } from "./assessment.model";
+import { ICourseOfActionMapping } from "./course-of-action-mapping.model";
+import { ISupportingVideo } from "./supporting-video.model";
+
 
 export interface IExerciseOrModality {
   id?: number;

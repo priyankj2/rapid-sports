@@ -5,39 +5,39 @@
 
             <hr>
 
-            <jhi-alert-error></jhi-alert-error>
+            <!-- <jhi-alert-error></jhi-alert-error> -->
 
             <dl class="row-md jh-entity-details">
                 <dt><span jhiTranslate="rapidApp.patientNote.dateCreated">Date Created</span></dt>
                 <dd>
-                    <span>{{ patientNote.dateCreated }}</span>
+                    <!-- <span>{{ patientNote.dateCreated }}</span> -->
                 </dd>
                 <dt><span jhiTranslate="rapidApp.patientNote.noteText">Note Text</span></dt>
                 <dd>
-                    <span>{{ patientNote.noteText }}</span>
+                    <!-- <span>{{ patientNote.noteText }}</span> -->
                 </dd>
                 <dt><span jhiTranslate="rapidApp.patientNote.patient">Patient</span></dt>
                 <dd>
                     <div *ngIf="patientNote.patient">
-                        <a [routerLink]="['/athlete', patientNote.patient?.id, 'view']">{{ patientNote.patient?.lastName }}</a>
+                        <!-- <a [routerLink]="['/athlete', patientNote.patient?.id, 'view']">{{ patientNote.patient?.lastName }}</a> -->
                     </div>
                 </dd>
                 <dt><span jhiTranslate="rapidApp.patientNote.createdBy">Created By</span></dt>
                 <dd>
-                    {{ patientNote.createdBy?.login }}
+                    <!-- {{ patientNote.createdBy?.login }} -->
                 </dd>
             </dl>
 
             <button type="submit"
                     (click)="previousState()"
                     class="btn btn-info">
-                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+                <!-- <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span> -->
             </button>
 
             <button type="button"
                     [routerLink]="['/athlete-note', patientNote.id, 'edit']"
                     class="btn btn-primary">
-                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+                <!-- <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span> -->
             </button>
         </div>
     </div>

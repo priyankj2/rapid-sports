@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IPatientCourseOfAction } from 'app/shared/model/patient-course-of-action.model';
 import { PatientCourseOfActionService } from './patient-course-of-action.service';
 import { PatientCourseOfActionDeleteDialogComponent } from './patient-course-of-action-delete-dialog.component';
+import { IPatientCourseOfAction } from '../../shared/model/patient-course-of-action.model';
 
 @Component({
   selector: 'jhi-patient-course-of-action',

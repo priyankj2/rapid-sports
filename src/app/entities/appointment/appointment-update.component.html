@@ -4,7 +4,7 @@
             <h2 id="jhi-appointment-heading" jhiTranslate="rapidApp.appointment.home.createOrEditLabel">Create or edit a Appointment</h2>
 
             <div>
-                <jhi-alert-error></jhi-alert-error>
+                <!-- <jhi-alert-error></jhi-alert-error> -->
 
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
@@ -22,7 +22,7 @@
                         This field is required.
                         </small>
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.get('startTime')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            [hidden]="!editForm.get('startTime')?.errors?.['ZonedDateTimelocal']" jhiTranslate="entity.validation.ZonedDateTimelocal">
                             This field should be a date and time.
                         </small>
                     </div>
@@ -39,7 +39,7 @@
                         This field is required.
                         </small>
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.get('endTime')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            [hidden]="!editForm.get('endTime')?.errors?.['ZonedDateTimelocal']" jhiTranslate="entity.validation.ZonedDateTimelocal">
                             This field should be a date and time.
                         </small>
                     </div>
@@ -48,27 +48,27 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rapidApp.appointment.location" for="field_location">Location</label>
                     <select class="form-control" id="field_location" name="location" formControlName="location">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="locationOption.id === editForm.get('location')!.value?.id ? editForm.get('location')!.value : locationOption" *ngFor="let locationOption of locations; trackBy: trackById">{{ locationOption.name }}</option>
+                        <!-- <option [ngValue]="null"></option>
+                        <option [ngValue]="locationOption.id === editForm.get('location')!.value?.id ? editForm.get('location')!.value : locationOption" *ngFor="let locationOption of locations; trackBy: trackById">{{ locationOption.name }}</option> -->
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="rapidApp.appointment.patient" for="field_patient">Patient</label>
                     <select class="form-control" id="field_patient" name="patient" formControlName="patient">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="patientOption.id === editForm.get('patient')!.value?.id ? editForm.get('patient')!.value : patientOption" *ngFor="let patientOption of patients; trackBy: trackById">{{ patientOption.patientID }}</option>
+                        <!-- <option [ngValue]="null"></option>
+                        <option [ngValue]="patientOption.id === editForm.get('patient')!.value?.id ? editForm.get('patient')!.value : patientOption" *ngFor="let patientOption of patients; trackBy: trackById">{{ patientOption.patientID }}</option> -->
                     </select>
                 </div>
             </div>
 
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                    <!-- <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span> -->
                 </button>
 
                 <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                    <!-- <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span> -->
                 </button>
             </div>
         </form>

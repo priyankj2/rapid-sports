@@ -1,5 +1,5 @@
-import { IFootType } from 'app/shared/model/foot-type.model';
 import * as moment from 'moment';
+import { IFootType } from './foot-type.model';
 
 export class FootTestResult {
   constructor(

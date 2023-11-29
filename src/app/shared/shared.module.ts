@@ -5,14 +5,15 @@ import { AlertComponent } from './alert/alert.component';
 import { AlertErrorComponent } from './alert/alert-error.component';
 import { LoginModalComponent } from './login/login.component';
 import { HasAnyAuthorityDirective } from './auth/has-any-authority.directive';
-import { ScheduleComponent } from 'app/shared/schedule/schedule.component';
-import { DeviceInfoComponent } from 'app/shared/device-info/device-info.component';
-import { PatientSearchComponent } from 'app/shared/patient-search/patient-search.component';
-import { AppointmentDialogComponent } from 'app/shared/appointment-dialog/appointment-dialog.component';
+import { AppointmentDialogComponent } from './appointment-dialog/appointment-dialog.component';
+import { DeviceInfoComponent } from './device-info/device-info.component';
+import { ExcelPasteDirective } from './directives/excel-paste.directive';
 import { EventLoggerComponent } from './event-logger/event-logger.component';
-import { ExcelPasteDirective } from 'app/shared/directives/excel-paste.directive';
-import { PatientNoteListComponent } from 'app/shared/notes/patient-note-list.component';
-import { PatientNoteEditFormComponent } from 'app/shared/notes/edit-form/patient-note-edit-form.component';
+import { PatientNoteEditFormComponent } from './notes/edit-form/patient-note-edit-form.component';
+import { PatientNoteListComponent } from './notes/patient-note-list.component';
+import { PatientSearchComponent } from './patient-search/patient-search.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+
 
 @NgModule({
   imports: [RapidSharedLibsModule],

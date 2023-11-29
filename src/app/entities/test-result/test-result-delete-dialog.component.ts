@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { ITestResult } from 'app/shared/model/test-result.model';
 import { TestResultService } from './test-result.service';
+import { ITestResult } from '../../shared/model/test-result.model';
 
 @Component({
   templateUrl: './test-result-delete-dialog.component.html'

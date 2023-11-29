@@ -5,13 +5,14 @@ import { JhiResolvePagingParams } from 'ng-jhipster';
 import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
-import { Authority } from 'app/shared/constants/authority.constants';
-import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
-import { ICareProvider, CareProvider } from 'app/shared/model/care-provider.model';
+
 import { CareProviderService } from './care-provider.service';
 import { CareProviderComponent } from './care-provider.component';
 import { CareProviderDetailComponent } from './care-provider-detail.component';
 import { CareProviderUpdateComponent } from './care-provider-update.component';
+import { UserRouteAccessService } from '../../core/auth/user-route-access-service';
+import { Authority } from '../../shared/constants/authority.constants';
+import { ICareProvider, CareProvider } from '../../shared/model/care-provider.model';
 
 @Injectable({ providedIn: 'root' })
 export class CareProviderResolve implements Resolve<ICareProvider> {

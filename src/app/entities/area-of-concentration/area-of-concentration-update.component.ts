@@ -5,12 +5,12 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { AreaOfConcentration, IAreaOfConcentration } from 'app/shared/model/area-of-concentration.model';
 import { AreaOfConcentrationService } from './area-of-concentration.service';
-import { ITestResult } from 'app/shared/model/test-result.model';
-import { TestResultService } from 'app/entities/test-result/test-result.service';
-import { IAssessment } from 'app/shared/model/assessment.model';
-import { AssessmentService } from 'app/entities/assessment/assessment.service';
+import { AssessmentService } from '../assessment/assessment.service';
+import { IAssessment } from '../../shared/model/assessment.model';
+import { TestResultService } from '../test-result/test-result.service';
+import { ITestResult } from '../../shared/model/test-result.model';
+import { IAreaOfConcentration, AreaOfConcentration } from '../../shared/model/area-of-concentration.model';
 
 type SelectableEntity = ITestResult | IAssessment;
 

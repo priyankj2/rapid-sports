@@ -5,8 +5,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { IAgeGroup, AgeGroup } from 'app/shared/model/age-group.model';
 import { AgeGroupService } from './age-group.service';
+import { IAgeGroup, AgeGroup } from '../../shared/model/age-group.model';
 
 @Component({
   selector: 'jhi-age-group-update',

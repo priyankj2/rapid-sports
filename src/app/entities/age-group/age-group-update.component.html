@@ -4,7 +4,7 @@
             <h2 id="jhi-age-group-heading" jhiTranslate="rapidApp.ageGroup.home.createOrEditLabel">Create or edit a Age Group</h2>
 
             <div>
-                <jhi-alert-error></jhi-alert-error>
+                <!-- <jhi-alert-error></jhi-alert-error> -->
 
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
@@ -21,7 +21,7 @@
                         This field is required.
                         </small>
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.get('minimumAge')?.errors?.number" jhiTranslate="entity.validation.number">
+                            [hidden]="!editForm.get('minimumAge')?.errors?.['number']" jhiTranslate="entity.validation.number">
                             This field should be a number.
                         </small>
                     </div>
@@ -37,7 +37,7 @@
                         This field is required.
                         </small>
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.get('maximumAge')?.errors?.number" jhiTranslate="entity.validation.number">
+                            [hidden]="!editForm.get('maximumAge')?.errors?.['number']" jhiTranslate="entity.validation.number">
                             This field should be a number.
                         </small>
                     </div>
@@ -46,11 +46,11 @@
 
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                    <!-- <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span> -->
                 </button>
 
                 <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                    <!-- <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span> -->
                 </button>
             </div>
         </form>

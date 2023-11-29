@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { IAgeGroup } from 'app/shared/model/age-group.model';
 import { AgeGroupService } from './age-group.service';
+import { IAgeGroup } from '../../shared/model/age-group.model';
 
 @Component({
   templateUrl: './age-group-delete-dialog.component.html'

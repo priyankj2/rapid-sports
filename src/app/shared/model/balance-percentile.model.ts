@@ -1,6 +1,7 @@
-import { IAgeGroup } from 'app/shared/model/age-group.model';
-import { Gender } from 'app/shared/model/enumerations/gender.model';
-import { TestCode } from 'app/shared/model/enumerations/test-code.model';
+import { IAgeGroup } from "./age-group.model";
+import { Gender } from "./enumerations/gender.model";
+import { TestCode } from "./enumerations/test-code.model";
+
 
 export interface IBalancePercentile {
   id?: number;

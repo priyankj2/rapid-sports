@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventLoggerService } from 'app/shared/event-logger.service';
+import { EventLoggerService } from '../event-logger.service';
 
 @Component({
   selector: 'jhi-event-logger',

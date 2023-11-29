@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IAppointment } from '../../shared/model/appointment.model';
 
-import { IAppointment } from 'app/shared/model/appointment.model';
 
 @Component({
   selector: 'jhi-appointment-detail',

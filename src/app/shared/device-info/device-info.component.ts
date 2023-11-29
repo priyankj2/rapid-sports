@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Device } from 'app/core/boditrak/device.model';
-import { BoditrakService } from 'app/core/boditrak/boditrak.service';
-import { TestManagementService } from 'app/core/test-management/test-management.service';
+import { BoditrakService } from '../../core/boditrak/boditrak.service';
+import { Device } from '../../core/boditrak/device.model';
+import { TestManagementService } from '../../core/test-management/test-management.service';
+
 
 @Component({
   selector: 'jhi-device-info',

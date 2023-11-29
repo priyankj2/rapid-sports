@@ -4,13 +4,14 @@ import { ActivatedRouteSnapshot, Resolve, Router, Routes } from '@angular/router
 import { EMPTY, Observable, of } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
-import { Authority } from 'app/shared/constants/authority.constants';
-import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
-import { IPatientNote, PatientNote } from 'app/shared/model/patient-note.model';
+
 import { PatientNoteService } from './patient-note.service';
 import { PatientNoteComponent } from './patient-note.component';
 import { PatientNoteDetailComponent } from './patient-note-detail.component';
 import { PatientNoteUpdateComponent } from './patient-note-update.component';
+import { UserRouteAccessService } from '../../core/auth/user-route-access-service';
+import { Authority } from '../../shared/constants/authority.constants';
+import { IPatientNote, PatientNote } from '../../shared/model/patient-note.model';
 
 @Injectable({ providedIn: 'root' })
 export class PatientNoteResolve implements Resolve<IPatientNote> {

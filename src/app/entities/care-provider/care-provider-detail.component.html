@@ -5,7 +5,7 @@
 
             <hr>
 
-            <jhi-alert-error></jhi-alert-error>
+            <!-- <jhi-alert-error></jhi-alert-error> -->
 
             <dl class="row-md jh-entity-details">
                 <dt><span jhiTranslate="rapidApp.careProvider.firstName">First Name</span></dt>
@@ -31,7 +31,7 @@
                 <dt><span jhiTranslate="rapidApp.careProvider.clinic">Clinic</span></dt>
                 <dd>
                     <div *ngIf="careProvider.clinic">
-                        <a [routerLink]="['/clinic', careProvider.clinic?.id, 'view']">{{ careProvider.clinic?.name }}</a>
+                        <!-- <a [routerLink]="['/clinic', careProvider.clinic?.id, 'view']">{{ careProvider.clinic?.name }}</a> -->
                     </div>
                 </dd>
             </dl>
@@ -39,14 +39,14 @@
             <button type="submit"
                     (click)="previousState()"
                     class="btn btn-info">
-                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+                <!-- <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span> -->
             </button>
 
-            <button type="button"
+            <!-- <button type="button"
                     [routerLink]="['/coach', careProvider.id, 'edit']"
                     class="btn btn-primary">
                 <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-            </button>
+            </button> -->
         </div>
     </div>
 </div>

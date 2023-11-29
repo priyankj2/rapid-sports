@@ -1,5 +1,6 @@
-import { IExerciseOrModality } from 'app/shared/model/exercise-or-modality.model';
-import { IPatientCourseOfAction } from 'app/shared/model/patient-course-of-action.model';
+import { IExerciseOrModality } from "./exercise-or-modality.model";
+import { IPatientCourseOfAction } from "./patient-course-of-action.model";
+
 
 export interface IExerciseAssignment {
   id?: number;

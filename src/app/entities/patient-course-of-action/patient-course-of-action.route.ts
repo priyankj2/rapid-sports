@@ -4,13 +4,14 @@ import { ActivatedRouteSnapshot, Resolve, Router, Routes } from '@angular/router
 import { EMPTY, Observable, of } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
-import { Authority } from 'app/shared/constants/authority.constants';
-import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
-import { IPatientCourseOfAction, PatientCourseOfAction } from 'app/shared/model/patient-course-of-action.model';
+
 import { PatientCourseOfActionService } from './patient-course-of-action.service';
 import { PatientCourseOfActionComponent } from './patient-course-of-action.component';
 import { PatientCourseOfActionDetailComponent } from './patient-course-of-action-detail.component';
 import { PatientCourseOfActionUpdateComponent } from './patient-course-of-action-update.component';
+import { UserRouteAccessService } from '../../core/auth/user-route-access-service';
+import { Authority } from '../../shared/constants/authority.constants';
+import { IPatientCourseOfAction, PatientCourseOfAction } from '../../shared/model/patient-course-of-action.model';
 
 @Injectable({ providedIn: 'root' })
 export class PatientCourseOfActionResolve implements Resolve<IPatientCourseOfAction> {

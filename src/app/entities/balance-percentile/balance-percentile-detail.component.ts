@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IBalancePercentile } from '../../shared/model/balance-percentile.model';
 
-import { IBalancePercentile } from 'app/shared/model/balance-percentile.model';
 
 @Component({
   selector: 'jhi-balance-percentile-detail',

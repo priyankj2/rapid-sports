@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { AppointmentDialogComponent } from 'app/shared/appointment-dialog/appointment-dialog.component';
-import { IPatient } from 'app/shared/model/patient.model';
-import { AppointmentService } from 'app/entities/appointment/appointment.service';
+import { AppointmentService } from '../../entities/appointment/appointment.service';
+import { IPatient } from '../model/patient.model';
+import { AppointmentDialogComponent } from './appointment-dialog.component';
+
 
 @Injectable({
   providedIn: 'root'

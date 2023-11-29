@@ -4,11 +4,12 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-
-import { BalancePercentile, IBalancePercentile } from 'app/shared/model/balance-percentile.model';
+import { IAgeGroup } from '../../shared/model/age-group.model';
+import { IBalancePercentile, BalancePercentile } from '../../shared/model/balance-percentile.model';
+import { AgeGroupService } from '../age-group/age-group.service';
 import { BalancePercentileService } from './balance-percentile.service';
-import { IAgeGroup } from 'app/shared/model/age-group.model';
-import { AgeGroupService } from 'app/entities/age-group/age-group.service';
+
+
 
 @Component({
   selector: 'jhi-balance-percentile-update',

@@ -6,26 +6,26 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
-
-import { IAssessment, Assessment } from 'app/shared/model/assessment.model';
+import { DATE_TIME_FORMAT } from '../../shared/constants/input.constants';
+import { IAppointment } from '../../shared/model/appointment.model';
+import { IAssessment, Assessment } from '../../shared/model/assessment.model';
+import { ICareProvider } from '../../shared/model/care-provider.model';
+import { ICondition } from '../../shared/model/condition.model';
+import { IFootDecodingMeasurement } from '../../shared/model/foot-decoding-measurement.model';
+import { IFootType } from '../../shared/model/foot-type.model';
+import { IImageData } from '../../shared/model/image-data.model';
+import { IObservation } from '../../shared/model/observation.model';
+import { IPatient } from '../../shared/model/patient.model';
+import { AppointmentService } from '../appointment/appointment.service';
+import { CareProviderService } from '../care-provider/care-provider.service';
+import { ConditionService } from '../condition/condition.service';
+import { FootDecodingMeasurementService } from '../foot-decoding-measurement/foot-decoding-measurement.service';
+import { FootTypeService } from '../foot-type/foot-type.service';
+import { ImageDataService } from '../image-data/image-data.service';
+import { ObservationService } from '../observation/observation.service';
+import { PatientService } from '../patient/patient.service';
 import { AssessmentService } from './assessment.service';
-import { IImageData } from 'app/shared/model/image-data.model';
-import { ImageDataService } from 'app/entities/image-data/image-data.service';
-import { ICareProvider } from 'app/shared/model/care-provider.model';
-import { CareProviderService } from 'app/entities/care-provider/care-provider.service';
-import { IObservation } from 'app/shared/model/observation.model';
-import { ObservationService } from 'app/entities/observation/observation.service';
-import { IFootDecodingMeasurement } from 'app/shared/model/foot-decoding-measurement.model';
-import { FootDecodingMeasurementService } from 'app/entities/foot-decoding-measurement/foot-decoding-measurement.service';
-import { IFootType } from 'app/shared/model/foot-type.model';
-import { FootTypeService } from 'app/entities/foot-type/foot-type.service';
-import { ICondition } from 'app/shared/model/condition.model';
-import { ConditionService } from 'app/entities/condition/condition.service';
-import { IAppointment } from 'app/shared/model/appointment.model';
-import { AppointmentService } from 'app/entities/appointment/appointment.service';
-import { IPatient } from 'app/shared/model/patient.model';
-import { PatientService } from 'app/entities/patient/patient.service';
+
 
 type SelectableEntity =
   | IImageData

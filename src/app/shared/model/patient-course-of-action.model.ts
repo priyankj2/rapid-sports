@@ -1,7 +1,8 @@
 import { Moment } from 'moment';
-import { IPatient } from 'app/shared/model/patient.model';
-import { IAssessment } from 'app/shared/model/assessment.model';
-import { IExerciseAssignment } from 'app/shared/model/exercise-assignment.model';
+import { IAssessment } from './assessment.model';
+import { IExerciseAssignment } from './exercise-assignment.model';
+import { IPatient } from './patient.model';
+
 
 export interface IPatientCourseOfAction {
   id?: number;

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { IStateOrProvince } from 'app/shared/model/state-or-province.model';
 import { StateOrProvinceService } from './state-or-province.service';
+import { IStateOrProvince } from '../../shared/model/state-or-province.model';
 
 @Component({
   templateUrl: './state-or-province-delete-dialog.component.html'

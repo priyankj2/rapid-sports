@@ -1,6 +1,7 @@
 import { Moment } from 'moment';
-import { ILocation } from 'app/shared/model/location.model';
-import { IPatient } from 'app/shared/model/patient.model';
+import { ILocation } from './location.model';
+import { IPatient } from './patient.model';
+
 
 export interface IAppointment {
   id?: number;

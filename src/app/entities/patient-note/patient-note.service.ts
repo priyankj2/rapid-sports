@@ -3,10 +3,11 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as moment from 'moment';
+import { SERVER_API_URL } from '../../app.constants';
+import { IPatientNote } from '../../shared/model/patient-note.model';
+import { createRequestOption } from '../../shared/util/request-util';
 
-import { SERVER_API_URL } from 'app/app.constants';
-import { createRequestOption } from 'app/shared/util/request-util';
-import { IPatientNote } from 'app/shared/model/patient-note.model';
+
 
 type EntityResponseType = HttpResponse<IPatientNote>;
 type EntityArrayResponseType = HttpResponse<IPatientNote[]>;

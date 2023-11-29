@@ -1,9 +1,10 @@
-import { ICondition } from 'app/shared/model/condition.model';
-import { IFootType } from 'app/shared/model/foot-type.model';
-import { IAreaOfConcentration } from 'app/shared/model/area-of-concentration.model';
-import { IClinic } from 'app/shared/model/clinic.model';
-import { IExerciseOrModality } from 'app/shared/model/exercise-or-modality.model';
-import { IObservation } from 'app/shared/model/observation.model';
+import { IAreaOfConcentration } from "./area-of-concentration.model";
+import { IClinic } from "./clinic.model";
+import { ICondition } from "./condition.model";
+import { IExerciseOrModality } from "./exercise-or-modality.model";
+import { IFootType } from "./foot-type.model";
+import { IObservation } from "./observation.model";
+
 
 export interface ICourseOfActionMapping {
   id?: number;

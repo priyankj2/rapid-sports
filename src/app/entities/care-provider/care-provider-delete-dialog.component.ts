@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { ICareProvider } from 'app/shared/model/care-provider.model';
 import { CareProviderService } from './care-provider.service';
+import { ICareProvider } from '../../shared/model/care-provider.model';
 
 @Component({
   templateUrl: './care-provider-delete-dialog.component.html'

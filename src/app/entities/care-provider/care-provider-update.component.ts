@@ -5,10 +5,12 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { CareProvider, ICareProvider } from 'app/shared/model/care-provider.model';
+
 import { CareProviderService } from './care-provider.service';
-import { IClinic } from 'app/shared/model/clinic.model';
-import { ClinicService } from 'app/entities/clinic/clinic.service';
+import { ICareProvider, CareProvider } from '../../shared/model/care-provider.model';
+import { IClinic } from '../../shared/model/clinic.model';
+import { ClinicService } from '../clinic/clinic.service';
+
 
 type SelectableEntity = IClinic;
 

@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IPatient, Patient } from 'app/shared/model/patient.model';
-import { PatientService } from 'app/entities/patient/patient.service';
+
 import { Subscription } from 'rxjs';
-import { AssessmentService } from 'app/entities/assessment/assessment.service';
-import { AppointmentModalService } from 'app/shared/appointment-dialog/appointment-modal.service';
-import { ObservationCategory } from 'app/shared/model/enumerations/observation-enum.model';
+
+import { PatientService } from '../../entities/patient/patient.service';
+import { IPatient, Patient } from '../model/patient.model';
+import { AssessmentService } from '../../entities/assessment/assessment.service';
+import { AppointmentModalService } from '../appointment-dialog/appointment-modal.service';
+import { ObservationCategory } from '../model/enumerations/observation-enum.model';
 
 @Component({
   selector: 'jhi-patient-search',

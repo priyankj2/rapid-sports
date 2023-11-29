@@ -3,14 +3,13 @@ import { HttpResponse } from '@angular/common/http';
 import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router';
 import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
-
-import { Authority } from 'app/shared/constants/authority.constants';
-import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
-import { IAgeGroup, AgeGroup } from 'app/shared/model/age-group.model';
 import { AgeGroupService } from './age-group.service';
 import { AgeGroupComponent } from './age-group.component';
 import { AgeGroupDetailComponent } from './age-group-detail.component';
 import { AgeGroupUpdateComponent } from './age-group-update.component';
+import { IAgeGroup, AgeGroup } from '../../shared/model/age-group.model';
+import { UserRouteAccessService } from '../../core/auth/user-route-access-service';
+import { Authority } from '../../shared/constants/authority.constants';
 
 @Injectable({ providedIn: 'root' })
 export class AgeGroupResolve implements Resolve<IAgeGroup> {

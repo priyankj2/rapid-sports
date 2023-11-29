@@ -1,5 +1,5 @@
-import { IExerciseOrModality } from 'app/shared/model/exercise-or-modality.model';
-import { IClinic } from 'app/shared/model/clinic.model';
+import { IClinic } from "./clinic.model";
+import { IExerciseOrModality } from "./exercise-or-modality.model";
 
 export interface ISupportingVideo {
   id?: number;
