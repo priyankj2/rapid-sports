@@ -3,11 +3,11 @@ import { Location } from '@angular/common';
 import { Router, NavigationEnd, Event } from '@angular/router';
 import { Subscription, ReplaySubject, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import * as SockJS from 'sockjs-client';
+import SockJS from 'sockjs-client';
 import * as Stomp from 'webstomp-client';
 
-import { AuthServerProvider } from 'app/core/auth/auth-jwt.service';
 import { TrackerActivity } from './tracker-activity.model';
+import { AuthServerProvider } from '../auth/auth-jwt.service';
 
 @Injectable({ providedIn: 'root' })
 export class TrackerService {

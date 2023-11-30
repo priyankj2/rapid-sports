@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Device } from 'app/core/boditrak/device.model';
 import { map } from 'rxjs/operators';
-import { RingBuffer } from 'app/core/boditrak/ring-buffer.model';
+import { Device } from './device.model';
+import { RingBuffer } from './ring-buffer.model';
 
 @Injectable({
   providedIn: 'root'

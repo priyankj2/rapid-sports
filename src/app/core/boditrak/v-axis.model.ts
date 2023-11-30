@@ -1,4 +1,4 @@
-import { BoundingBox } from 'app/core/boditrak/bounding-box.model';
+import { BoundingBox } from "./bounding-box.model";
 
 export class VAxis extends BoundingBox {
   canvas: any;
@@ -27,7 +27,7 @@ export class VAxis extends BoundingBox {
     this.edge2edge = options.edge2edge ?? false;
   }
 
-  draw(): void {
+  override draw(): void {
     let value = this.minimum;
     const range = this.maximum - this.minimum;
     const x =

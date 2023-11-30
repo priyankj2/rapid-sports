@@ -1,13 +1,13 @@
-import { BoundingBox } from 'app/core/boditrak/bounding-box.model';
-import { Heatmap } from 'app/core/boditrak/heat-map.model';
-import { VAxis } from 'app/core/boditrak/v-axis.model';
+import { BoundingBox } from "./bounding-box.model";
+import { Heatmap } from "./heat-map.model";
+import { VAxis } from "./v-axis.model";
 
 export class VLegend extends BoundingBox {
   canvas: any;
   ctx: any;
   background = 'black';
   color = 'black';
-  width = 60;
+  override width = 60;
   align = 'center';
   gap = 0;
   bandWidth = 20;
@@ -69,11 +69,11 @@ export class VLegend extends BoundingBox {
     }
   }
 
-  setRect(left: number, top: number, width: number, height: number): void {
+  override setRect(left: number, top: number, width: number, height: number): void {
     super.setRect(left, top, width, height);
     const rect = this.getBandRect();
     if (this.heatmap) {
-      this.heatmap.setRect(rect.left, rect.top, rect.width, rect.height);
+      this.heatmap["setRect"](rect.left, rect.top, rect.width, rect.height);
     }
     if (this.vaxis) {
       if (this.align === 'left') {
@@ -86,7 +86,7 @@ export class VLegend extends BoundingBox {
     }
   }
 
-  draw(): void {
+  override draw(): void {
     const rect = this.getBandRect();
     this.ctx.save();
     this.ctx.fillStyle = this.background;

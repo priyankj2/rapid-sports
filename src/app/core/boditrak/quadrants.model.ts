@@ -1,4 +1,4 @@
-import { BoundingBox } from 'app/core/boditrak/bounding-box.model';
+import { BoundingBox } from "./bounding-box.model";
 
 export class Quadrants extends BoundingBox {
   canvas: any;
@@ -17,7 +17,7 @@ export class Quadrants extends BoundingBox {
     this.color = options.color ?? '#424242';
   }
 
-  draw(): void {
+  override draw(): void {
     this.ctx.save();
     this.ctx.strokeStyle = this.color;
     this.ctx.lineWidth = 5;

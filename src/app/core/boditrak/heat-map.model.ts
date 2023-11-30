@@ -1,7 +1,9 @@
-import { BoundingBox } from 'app/core/boditrak/bounding-box.model';
-import { ColorSet } from 'app/core/boditrak/color-set.model';
+import { BoundingBox } from "./bounding-box.model";
+import { ColorSet } from "./color-set.model";
+
 
 export class Heatmap extends BoundingBox {
+  [x: string]: any;
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
   colorset = new ColorSet(0);
@@ -29,7 +31,7 @@ export class Heatmap extends BoundingBox {
     this.values = values;
   }
 
-  draw(): void {
+  override draw(): void {
     if (!this.columns || !this.rows || this.values.length < this.columns * this.rows) return;
 
     const values2 = this.interpolateGrid(this.values, this.columns, this.rows);

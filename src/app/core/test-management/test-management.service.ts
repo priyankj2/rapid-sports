@@ -1,20 +1,21 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { IObservation } from 'app/shared/model/observation.model';
-import { ICondition } from 'app/shared/model/condition.model';
-import { FootTestResult } from 'app/shared/model/foot-test-result.model';
-import { CenterOfPressure } from 'app/core/boditrak/center-of-pressure.model';
-import { IAreaOfConcentration } from 'app/shared/model/area-of-concentration.model';
-import { Assessment, IAssessment } from 'app/shared/model/assessment.model';
-import { AssessmentService } from 'app/entities/assessment/assessment.service';
-import * as moment from 'moment';
-import { IPatient } from 'app/shared/model/patient.model';
+import moment from 'moment';
+
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
-import { IAgeGroup } from 'app/shared/model/age-group.model';
-import { NotificationService } from '@progress/kendo-angular-notification';
-import { ImageData } from 'app/shared/model/image-data.model';
-import { ObservationCategory } from 'app/shared/model/enumerations/observation-enum.model';
 
+import { NotificationService } from '@progress/kendo-angular-notification';
+
+import { AssessmentService } from '../../entities/assessment/assessment.service';
+import { IAgeGroup } from '../../shared/model/age-group.model';
+import { IAreaOfConcentration } from '../../shared/model/area-of-concentration.model';
+import { IAssessment, Assessment } from '../../shared/model/assessment.model';
+import { ICondition } from '../../shared/model/condition.model';
+import { ObservationCategory } from '../../shared/model/enumerations/observation-enum.model';
+import { FootTestResult } from '../../shared/model/foot-test-result.model';
+import { IObservation } from '../../shared/model/observation.model';
+import { IPatient } from '../../shared/model/patient.model';
+import { CenterOfPressure } from '../boditrak/center-of-pressure.model';
 @Injectable({
   providedIn: 'root'
 })

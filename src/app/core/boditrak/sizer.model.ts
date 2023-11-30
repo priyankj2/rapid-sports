@@ -1,4 +1,4 @@
-import { BoundingBox } from 'app/core/boditrak/bounding-box.model';
+import { BoundingBox } from "./bounding-box.model";
 
 export class Sizer extends BoundingBox {
   columns: number;
@@ -20,7 +20,7 @@ export class Sizer extends BoundingBox {
     this.edging = options.edging ?? 0;
   }
 
-  setRect(left: number, top: number, width: number, height: number): void {
+  override setRect(left: number, top: number, width: number, height: number): void {
     super.setRect(left, top, width, height);
     const cspacing = (this.spacing * width) / 100;
     const rspacing = (this.spacing * height) / 100;

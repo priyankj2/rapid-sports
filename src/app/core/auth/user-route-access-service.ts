@@ -3,9 +3,10 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AccountService } from 'app/core/auth/account.service';
-import { LoginModalService } from 'app/core/login/login-modal.service';
+
 import { StateStorageService } from './state-storage.service';
+import { LoginModalService } from '../login/login-modal.service';
+import { AccountService } from './account.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserRouteAccessService implements CanActivate {

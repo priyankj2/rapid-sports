@@ -1,6 +1,7 @@
-import { BoundingBox } from 'app/core/boditrak/bounding-box.model';
-import { Point } from 'app/core/boditrak/point.model';
-import { ColorSet } from 'app/core/boditrak/color-set.model';
+import { BoundingBox } from "./bounding-box.model";
+import { ColorSet } from "./color-set.model";
+import { Point } from "./point.model";
+
 
 export class Surface extends BoundingBox {
   canvas: HTMLCanvasElement;
@@ -55,7 +56,7 @@ export class Surface extends BoundingBox {
     }
   }
 
-  draw(): void {
+  override draw(): void {
     this.ctx.fillStyle = this.background;
     this.ctx.fillRect(this.left, this.top, this.width, this.height);
     if (this.values.length < this.columns * this.rows) return;

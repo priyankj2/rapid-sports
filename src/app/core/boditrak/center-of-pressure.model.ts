@@ -1,5 +1,6 @@
-import { FrameSection } from 'app/core/boditrak/frame-section.model';
-import { Sensor } from 'app/core/boditrak/sensor.model';
+import { FrameSection } from "./frame-section.model";
+import { Sensor } from "./sensor.model";
+
 
 export class CenterOfPressure {
   x: number;

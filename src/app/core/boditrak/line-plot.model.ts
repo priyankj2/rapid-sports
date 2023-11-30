@@ -1,4 +1,4 @@
-import { BoundingBox } from 'app/core/boditrak/bounding-box.model';
+import { BoundingBox } from "./bounding-box.model";
 
 export class LinePlot extends BoundingBox {
   canvas: any;
@@ -20,7 +20,7 @@ export class LinePlot extends BoundingBox {
     this.vertices = vertices;
   }
 
-  draw(): void {
+  override draw(): void {
     if (this.vertices.length === 0) return;
     const scaleX = this.width / (this.maximumX - this.minimumX);
     const scaleY = this.height / (this.maximumY - this.minimumY);

@@ -1,4 +1,4 @@
-import { BoundingBox } from 'app/core/boditrak/bounding-box.model';
+import { BoundingBox } from "./bounding-box.model";
 
 export class Graph extends BoundingBox {
   private ctx: CanvasRenderingContext2D | null | undefined;
@@ -34,7 +34,7 @@ export class Graph extends BoundingBox {
     this.margins = margins;
   }
 
-  setRect(left: number, top: number, width: number, height: number): void {
+  override setRect(left: number, top: number, width: number, height: number): void {
     super.setRect(left, top, width, height);
     let pleft: number;
     let ptop: number;
@@ -88,7 +88,7 @@ export class Graph extends BoundingBox {
     });
   }
 
-  draw(): void {
+  override draw(): void {
     this.ctx?.save();
     if (this.background) {
       this.ctx!.fillStyle = this.background;
