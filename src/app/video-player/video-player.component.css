@@ -11,15 +11,15 @@
 
 }
 
-button {
-  background-color: #4caf50;
+.custom-controls i {
+  background-color:#2C2C2E;
   color: #fff;
   padding: 10px 15px;
   margin: 5px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 30px;
 }
 
 

@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
-import { DelayedVideoComponent } from './delayed-video/delayed-video.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidenavComponent } from './shared/sidenav/sidenav.component';
 import { VerticalForceComponent } from './shared/charts/vertical-force/vertical-force.component';
@@ -15,7 +14,6 @@ import { TempoRhythmComponent } from './shared/charts/tempo-rhythm/tempo-rhythm.
   declarations: [
     AppComponent,
     VideoPlayerComponent,
-    DelayedVideoComponent,
     HeaderComponent,
     SidenavComponent,
     VerticalForceComponent,

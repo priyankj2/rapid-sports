@@ -2,11 +2,11 @@
   <div>
     <div class="">
       <div class="custom-controls">
-        <button (click)="togglePlayPause()">Play/Pause</button>
-        <!-- <button (click)="test()">Test</button> -->
-        <button (click)="startRecording()" *ngIf="!isRecording" >Start Recording</button>
-        <button (click)="stopRecording()" *ngIf="isRecording">Stop Recording</button>
-        <button (click)="captureImage()">Capture</button>
+        <i class="fa-solid fa-gear"  (click)="togglePlayPause()" title="Play/Pause"></i>
+        <i class="fa-solid fa-record-vinyl" *ngIf="!isRecording" (click)="startRecording()" title="Start Recording"></i>
+        <i class="fa-solid fa-stop" *ngIf="isRecording" (click)="stopRecording()" title="Stop Recording"></i>
+        <i class="fa-solid fa-power-off" (click)="captureImage()" title="Capture"></i>
+        <i class="fa-solid fa-video" title="Show Recorded Video" (click)="showRecordedVideo()"></i>
         <!-- <input type="range" id="videoSeeker" [value]="currentSeekTime" (input)="seekVideo($event)"> -->
       </div>
       <div class="video-parent text-center">
@@ -14,6 +14,8 @@
         #videoElement width="100%" height="100%"></video>
         <video class="mirror-video delayed-video" video id="delayedVideo" autoplay playsinline width="150px"
         height="150px"></video>
+
+        <video class="video" style="width:360 !important;" controls #recordedVideo></video>
       </div>
       <div class="delayed-video">
         <!-- <span>5 Seconds Delayed Feed</span> -->
@@ -38,15 +40,12 @@
     </div>
   </div>
   <!-- <img src="assets/images/video-frame.jpg" alt="video frame" *ngIf="started==false" /> -->
-  <div [ngClass]="started?'camera-preview':''" #video id="cameraPreview"></div>
+  <!-- <div [ngClass]="started?'camera-preview':''" #video id="cameraPreview"></div> -->
   <!-- <button *ngIf="started==true" (click)="playVideo()">play</button>
 <button *ngIf="started==true" (click)="pauseVideo()">pause</button> -->
   <!-- <button (click)="startCamera()" *ngIf="started==false">Start</button>
-  <button (click)="captureImage()" *ngIf="started==true">Capture</button>
   <button (click)="flip()" *ngIf="started==true">Flip</button>
   <button (click)="stopCam()" *ngIf="started==true">Stop</button>
-  <button (click)="startRecording()" *ngIf="started==true">Start Recording</button>
-  <button (click)="stopRecording()" *ngIf="started==true">Stop Recording</button>
   <div *ngFor="let image of images">
     <img [src]="image">
   </div> -->

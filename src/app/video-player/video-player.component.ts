@@ -13,8 +13,8 @@ export class VideoPlayerComponent implements OnInit {
   stopped:boolean=false;
   images: string[] = [];
   //
-  @ViewChild('videoElement')
-  videoElement: any;
+  @ViewChild('videoElement') videoElement: any;
+  @ViewChild('recordedVideo') recordVideoElement: any;
   selectedVideoType: string = 'delayed';
   buttonValue: boolean = true;
   isLive: boolean = true;
@@ -37,50 +37,48 @@ export class VideoPlayerComponent implements OnInit {
   ];
   selectedPlaybackSpeed: number = 1; // Default to normal speed
   
-  recordVideoElement!: HTMLVideoElement;
   mediaRecorder: any;
   recordedBlobs!: Blob[];
   isRecording: boolean = false;
   downloadUrl!: string;
   stream!: MediaStream;
-
+  storeVideos: any[]  = [];
   constructor(
   ) {}
   
   ngOnInit(): void {
     this.startVideo();
-    // this.start();
+    this.start();
   }
 
-  // initCamera(config: any): void {
-  //   const browser = navigator as any;
-  //   browser.getUserMedia = browser.getUserMedia || browser.webkitGetUserMedia || browser.mozGetUserMedia || browser.msGetUserMedia;
-  //   browser.mediaDevices.getUserMedia(config).then((stream: MediaStream) => {
-  //     this.video.srcObject = stream;
-  //     this.video.play();
-  //   });
-  // }
+  initCamera(config: any): void {
+    const browser = navigator as any;
+    browser.getUserMedia = browser.getUserMedia || browser.webkitGetUserMedia || browser.mozGetUserMedia || browser.msGetUserMedia;
+    browser.mediaDevices.getUserMedia(config).then((stream: MediaStream) => {
+      this.video.srcObject = stream;
+      this.video.play();
+    });
+  }
 
-  // start(): void {
-  //   if (this.selectedCamera) {
-  //     this.initCamera({ video: { deviceId: this.selectedCamera.deviceId } });
-  //   } else {
-  //     this.initCamera({ video: true, audio: false });
-  //   }
-  // }
+  start(): void {
+    if (this.selectedCamera) {
+      this.initCamera({ video: { deviceId: this.selectedCamera.deviceId } });
+    } else {
+      this.initCamera({ video: true, audio: false });
+    }
+  }
 
-  // stop(): void {
-  //   if (this.video && this.video.srcObject) {
-  //     const stream = this.video.srcObject;
-  //     this.video.pause();
-  //     this.video.src = '';
-  //     stream.getTracks()[0].stop();
-  //   }
-  // }
+  stop(): void {
+    if (this.video && this.video.srcObject) {
+      const stream = this.video.srcObject;
+      this.video.pause();
+      this.video.src = '';
+      stream.getTracks()[0].stop();
+    }
+  }
 
   async startVideo() {
     document.body.classList.remove('overlay');
-    const delay = 5000;
     const mimeType = `video/webm; codecs="vp8"`;
     const stream = await this.getStream();
     navigator.mediaDevices
@@ -91,7 +89,7 @@ export class VideoPlayerComponent implements OnInit {
       })
       .then(stream => {
         this.videoElement = this.videoElement.nativeElement;
-        // this.recordVideoElement = this.recordVideoElementRef.nativeElement;
+        this.recordVideoElement = this.recordVideoElement.nativeElement;
 
         this.stream = stream;
         this.videoElement.srcObject = this.stream;
@@ -116,7 +114,7 @@ export class VideoPlayerComponent implements OnInit {
     delayedVideo.pause();
     recorder.start(50);
     delayedVideo.style.transform = 'scaleX(-1)';
-    this.videoElement.style.transform = 'scaleX(-1)';
+    this.videoElement.nativeElement.style.transform = 'scaleX(-1)';
     setTimeout(() => delayedVideo.play(), 5000);
   }
 
@@ -143,7 +141,6 @@ export class VideoPlayerComponent implements OnInit {
     } catch (err) {
       console.log(err);
     }
-    console.log(this.mediaRecorder)
     this.mediaRecorder.start(); // collect 100ms of data
     this.isRecording = !this.isRecording;
     this.onDataAvailableEvent();
@@ -153,15 +150,6 @@ export class VideoPlayerComponent implements OnInit {
   stopRecording() {
     this.mediaRecorder.stop();
     this.isRecording = !this.isRecording;
-    console.log('Recorded Blobs: ', this.recordedBlobs);
-  }
-
-  playRecording() {
-    if (!this.recordedBlobs || !this.recordedBlobs.length) {
-      console.log('cannot play.');
-      return;
-    }
-    this.recordVideoElement.play();
   }
 
   onDataAvailableEvent() {
@@ -182,15 +170,26 @@ export class VideoPlayerComponent implements OnInit {
         const videoBuffer = new Blob(this.recordedBlobs, {
           type: 'video/webm'
         });
-        this.downloadUrl = window.URL.createObjectURL(videoBuffer); // you can download with <a> tag
-        const link = document.createElement('a');
-        link.href = this.downloadUrl;
-        link.download = 'video.webm';
-        link.click();
-        console.log(this.downloadUrl)
+        this.storeVideos.push(videoBuffer);
+        // this.downloadUrl = window.URL.createObjectURL(videoBuffer); // you can download with <a> tag
+        // const link = document.createElement('a');
+        // link.href = this.downloadUrl;
+        // link.download = 'video.webm';
+        // link.click();
+        // this.recordVideoElement.src = window.URL.createObjectURL(videoBuffer)
+        // this.recordVideoElement.play();
       };
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  showRecordedVideo() {
+    if (this.storeVideos.length > 0) {
+      const url = window.URL.createObjectURL(this.storeVideos[0]);
+      console.log(url)
+      this.recordVideoElement.src = url;
+      this.recordVideoElement.play();
     }
   }
 
@@ -209,16 +208,16 @@ export class VideoPlayerComponent implements OnInit {
   //   realtimeVideo.play();
   // }
 
-  // pauseDelayedVideo() {
-  //   const delayedVideo = document.querySelector('#delayedVideo') as HTMLVideoElement;
-  //   delayedVideo.pause();
-  // }
+  pauseDelayedVideo() {
+    const delayedVideo = document.querySelector('#delayedVideo') as HTMLVideoElement;
+    delayedVideo.pause();
+  }
 
-  // startDelayedVideo() {
-  //   const delayedVideo = document.querySelector('#delayedVideo') as HTMLVideoElement;
-  //   this.videoState = 'Played';
-  //   delayedVideo.play();
-  // }
+  startDelayedVideo() {
+    const delayedVideo = document.querySelector('#delayedVideo') as HTMLVideoElement;
+    this.videoState = 'Played';
+    delayedVideo.play();
+  }
 
   // toggleDelayedVideoFullscreen() {
   //   const delayedVideo = document.querySelector('#delayedVideo') as HTMLVideoElement;
