@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Chart, registerables } from 'chart.js';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Chart, registerables } from 'chart.js/auto';
 @Component({
   selector: 'app-vertical-force',
   templateUrl: './vertical-force.component.html',
@@ -7,6 +7,37 @@ import { Chart, registerables } from 'chart.js';
 })
 export class VerticalForceComponent {
   dataArray: any = [];
+  decimalSequences: number[][] = [];
+  sumOfSums: number[] = [];
+  @ViewChild('areaChart', { static: true }) areaChart?: ElementRef<HTMLCanvasElement>;  
+
+  constructor() {
+    this.generateDecimalSequences(30);
+    this.calculateSums();
+  }
+
+
+  generateDecimalSequences(count: number) {
+    for (let i = 0; i < count; i++) {
+      const sequence: number[] = [];
+      for (let j = 0; j < 30; j++) {
+        // +ve number
+        // sequence.push(Math.random());
+        // -ve number also
+        sequence.push(Math.random() * 2 - 1);
+      }
+      this.decimalSequences.push(sequence);
+      console.log('this.decimalSequences', this.decimalSequences);
+    }
+  }
+
+  calculateSums() {
+    this.decimalSequences.forEach(sequence => {
+      const sum = sequence.reduce((acc, curr) => acc + curr, 0);
+      this.sumOfSums.push(sum);
+    });
+    console.log('this.sumOfSums', this.sumOfSums);
+  }
   ngOnInit() {
     Chart.register(...registerables);
   }
@@ -17,48 +48,34 @@ export class VerticalForceComponent {
       chart: any,
       ctx: any = document.getElementById('areaChart') as HTMLElement;
 
-    // JSON:
-    // Uncomment below and import * as data from 'json-path.json'.
-    // Or Angular 14, create anonymous JSON array and fetch with http
-    // constructor(private _http; HttpClient) {} ...
-    // Replace datasets with dataArray
-
-    // for (let key in chartData.items) {
-    //   if (chartData.items.hasOwnProperty(key)) {
-    //     this.dataArray.push(chartData.items[key]);
-    //   }
-    // }
 
     data = {
-      labels: ['Apples', 'Oranges', 'Mixed Fruit'],
+      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+      ],
       datasets: [
         {
-          label: 'Apples',
-          data: [0, 50, 45, 100],
-          backgroundColor: 'rgba(40,125,200,.5)',
-          borderColor: 'rgb(40,100,200)',
-          fill: true,
-          lineTension: 0,
-          radius: 5,
-        },
-        {
-          label: 'Oranges',
-          data: [30, 90, 111, 20],
-          backgroundColor: 'rgba(75,10,125,.5)',
-          borderColor: 'rgb(75,10,125)',
+          data: this.sumOfSums,
+          backgroundColor: '#23f994',
+          borderColor: '#23f994',
           fill: true,
           lineTension: 0.2,
-          radius: 5,
-        },
+          radius: 1,
+        }
       ],
     };
-
+    
     options = {
       responsive: true,
       maintainAspectRatio: false,
-      legend: {
-        display: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
       },
+      animation: {
+        duration: 2000, // Duration of the animation in milliseconds
+        easing: 'easeInOutCubic' // Easing function
+      }
     };
 
     chart = new Chart(ctx, {
