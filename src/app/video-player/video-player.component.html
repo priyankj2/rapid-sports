@@ -6,17 +6,22 @@
         <i class="fa-solid fa-record-vinyl" *ngIf="!isRecording" (click)="startRecording()" title="Start Recording"></i>
         <i class="fa-solid fa-stop" *ngIf="isRecording" (click)="stopRecording()" title="Stop Recording"></i>
         <i class="fa-solid fa-power-off" (click)="captureImage()" title="Capture"></i>
-        <i class="fa-solid fa-video" title="Show Recorded Video" (click)="showRecordedVideo()"></i>
+        <i class="fa-solid fa-video" title="Show Recorded Video" (click)="playRecordedVideo()"></i>
         <!-- <input type="range" id="videoSeeker" [value]="currentSeekTime" (input)="seekVideo($event)"> -->
       </div>
-      <div class="video-parent text-center">
+      <div class="video-parent text-center" [hidden]="showRecordedVideo">
         <video class="mirror-video" video id="realtimeVideo" autoplay playsinline
         #videoElement width="100%" height="100%"></video>
         <video class="mirror-video delayed-video" video id="delayedVideo" autoplay playsinline width="150px"
         height="150px"></video>
 
+      </div>
+
+      <div class="video-parent text-center" width="100%" height="100%" [hidden]="!showRecordedVideo">
+
         <video class="video" style="width:360 !important;" controls #recordedVideo></video>
       </div>
+
       <div class="delayed-video">
         <!-- <span>5 Seconds Delayed Feed</span> -->
         <!-- [controls]="displayControls" -->
