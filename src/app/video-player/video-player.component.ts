@@ -43,6 +43,7 @@ export class VideoPlayerComponent implements OnInit {
   downloadUrl!: string;
   stream!: MediaStream;
   storeVideos: any[]  = [];
+  showRecordedVideo = false;
   constructor(
   ) {}
   
@@ -184,12 +185,12 @@ export class VideoPlayerComponent implements OnInit {
     }
   }
 
-  showRecordedVideo() {
+  playRecordedVideo() {
     if (this.storeVideos.length > 0) {
       const url = window.URL.createObjectURL(this.storeVideos[0]);
-      console.log(url)
       this.recordVideoElement.src = url;
       this.recordVideoElement.play();
+      this.showRecordedVideo = true;
     }
   }
 
