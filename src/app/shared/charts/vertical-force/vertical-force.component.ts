@@ -9,7 +9,9 @@ export class VerticalForceComponent {
   dataArray: any = [];
   decimalSequences: number[][] = [];
   sumOfSums: number[] = [];
-  @ViewChild('areaChart', { static: true }) areaChart?: ElementRef<HTMLCanvasElement>;  
+  // Assuming this is your x-axis array
+  xValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+  @ViewChild('areaChart', { static: true }) areaChart?: ElementRef<HTMLCanvasElement>;
 
   constructor() {
     this.generateDecimalSequences(30);
@@ -27,7 +29,7 @@ export class VerticalForceComponent {
         sequence.push(Math.random() * 2 - 1);
       }
       this.decimalSequences.push(sequence);
-      console.log('this.decimalSequences', this.decimalSequences);
+      // console.log('this.decimalSequences', this.decimalSequences);
     }
   }
 
@@ -36,7 +38,7 @@ export class VerticalForceComponent {
       const sum = sequence.reduce((acc, curr) => acc + curr, 0);
       this.sumOfSums.push(sum);
     });
-    console.log('this.sumOfSums', this.sumOfSums);
+    // console.log('this.sumOfSums', this.sumOfSums);
   }
   ngOnInit() {
     Chart.register(...registerables);
@@ -50,8 +52,7 @@ export class VerticalForceComponent {
 
 
     data = {
-      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
-      ],
+      labels: this.xValues,
       datasets: [
         {
           data: this.sumOfSums,
@@ -63,7 +64,7 @@ export class VerticalForceComponent {
         }
       ],
     };
-    
+
     options = {
       responsive: true,
       maintainAspectRatio: false,
