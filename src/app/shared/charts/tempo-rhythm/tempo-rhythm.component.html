@@ -1,7 +1,18 @@
-
 <div class="card-wrap">
-    <div class="card-head">
-      Pressure and Stance
-    </div>
+  <div class="card-head">
+    Pressure and Stance
   </div>
-<canvas id="areaChart2" height="50px"></canvas>
+</div>
+<div class="row pressureHeading">
+  <div class="col-sm-4">Backswing: {{this.backSwing}} ms</div>
+  <div class="col-sm-8 line" [ngStyle]="{ 'width.px': lineWidth }"></div>
+</div>
+<div class="pressureHeading">
+  Downswing: {{this.downSwing}} ms
+</div>
+<div class="pressureHeading">
+  Total Swing Duration: {{this.totalSwing}} ms
+</div>
+<div class="pressureHeading">
+  Rhythm: {{this.rhythm}} ms
+</div>

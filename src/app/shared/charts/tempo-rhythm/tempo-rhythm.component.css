@@ -1,0 +1,15 @@
+.pressureHeading {
+    color: white;
+    font-size: 11px;
+}
+
+.line {
+    height: 2px; /* Adjust height as needed */
+    display: flex;
+    margin-top: 8px;
+    background-color: rgb(255, 255, 255); /* Change color as needed */
+  }
+  
+  
+
+  
